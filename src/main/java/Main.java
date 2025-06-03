@@ -64,7 +64,7 @@ public class Main {
                     break;
 
                 case 0:
-                    return;
+                    break;
 
                 default:
                     System.out.println("Opção inválida, tente novamente.");
@@ -100,7 +100,7 @@ public class Main {
                     break;
 
                 case 0:
-                    return;
+                    break;
 
                 default:
                     System.out.println("Opção inválida, tente novamente.");
@@ -136,7 +136,7 @@ public class Main {
                     break;
 
                 case 0:
-                    return;
+                    break;
 
                 default:
                     System.out.println("Opção inválida, tente novamente.");
