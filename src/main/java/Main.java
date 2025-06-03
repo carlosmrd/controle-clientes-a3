@@ -33,7 +33,6 @@ public class Main {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-
         } while (opcao != 0);
     }
 
@@ -69,7 +68,6 @@ public class Main {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-
         } while (opcao != 0);
     }
 
@@ -105,7 +103,6 @@ public class Main {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-
         } while (opcao != 0);
     }
 
@@ -141,7 +138,6 @@ public class Main {
                 default:
                     System.out.println("Opção inválida, tente novamente.");
             }
-
         } while (opcao != 0);
     }
 }
