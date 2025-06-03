@@ -10,7 +10,7 @@ public class InicializadorDB {
     public static void inicializar() {
         String url = "jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true";
         String usuario = "root";
-        String senha = "root";
+        String senha = "1234";
 
         try (Connection conexao = DriverManager.getConnection(url, usuario, senha);
              Statement stmt = conexao.createStatement()) {
