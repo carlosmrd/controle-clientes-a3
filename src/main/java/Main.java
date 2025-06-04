@@ -124,20 +124,36 @@ public class Main {
                     Cliente cliente = clienteController.buscarClientePorId(id);
 
                     //Obrigatórios
-                    String nome = menu.lerNomeCliente();
-                    String telefone = menu.lerTelefoneCliente();
-                    String uf = menu.lerUfCliente();
-                    cliente.setNome(nome);
-                    cliente.setTelefone(telefone);
-                    cliente.setUf(uf);
+                    String nome = menu.lerNovoNomeCliente();
+                    if (!nome.equals("0")){
+                        cliente.setNome(nome);
+                    }
+
+                    String telefone = menu.lerNovoTelefoneCliente();
+                    if (!telefone.equals("0")){
+                        cliente.setTelefone(telefone);
+                    }
+
+                    String uf = menu.lerNovoUfCliente();
+                    if (!uf.equals("0")){
+                        cliente.setUf(uf);
+                    }
 
                     //Opcionais
                     String cep = menu.lerCepCliente();
-                    cliente.setCep(cep);
+                    if (!cep.equals("0")){
+                        cliente.setCep(cep);
+                    }
+
                     String complemento = menu.lerComplementoCliente();
-                    cliente.setComplemento(complemento);
+                    if (!complemento.equals("0")){
+                        cliente.setComplemento(complemento);
+                    }
+
                     String cpf = menu.lerCpfCliente();
-                    cliente.setCpf(cpf);
+                    if (!cpf.equals("0")){
+                        cliente.setCpf(cpf);
+                    }
 
                     //Número do processo, nem sempre existe
                     String numeroProcesso = menu.lerNumeroProcesso();

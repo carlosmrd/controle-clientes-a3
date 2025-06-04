@@ -48,6 +48,18 @@ public class Menu {
         return nome;
     }
 
+    public String lerNovoNomeCliente() {
+        System.out.print("Insira o nome do cliente (0 para não alterar): ");
+
+        String nome = scanner.nextLine();
+
+        if (nome.equals("0")){
+            return "0";
+        }
+
+        return nome;
+    }
+
     public String lerTelefoneCliente() {
         System.out.print("Insira o telefone do cliente: ");
 
@@ -55,10 +67,34 @@ public class Menu {
         return telefone;
     }
 
+    public String lerNovoTelefoneCliente() {
+        System.out.print("Insira o telefone do cliente (0 para não alterar): ");
+
+        String telefone = scanner.nextLine();
+
+        if (telefone.equals("0")){
+            return "0";
+        }
+
+        return telefone;
+    }
+
     public String lerUfCliente() {
         System.out.print("Insira a UF de residência do cliente: ");
 
         String uf = scanner.nextLine();
+        return uf;
+    }
+
+    public String lerNovoUfCliente() {
+        System.out.print("Insira a UF de residência do cliente (0 para não alterar): ");
+
+        String uf = scanner.nextLine();
+
+        if (uf.equals("0")){
+            return "0";
+        }
+
         return uf;
     }
 
@@ -115,7 +151,7 @@ public class Menu {
         String cep = scanner.nextLine();
 
         if (cep.equals("0")){
-            return null;
+            return "0";
         }
 
         return cep;
@@ -127,19 +163,19 @@ public class Menu {
         String complemento = scanner.nextLine();
 
         if (complemento.equals("0")){
-            return null;
+            return "0";
         }
 
         return complemento;
     }
 
     public String lerCpfCliente() {
-        System.out.print("Insira o CPF do cliente (0 para deixar em branco): ");
+        System.out.print("Insira o CPF do cliente (0 para não alterar): ");
 
         String cpf = scanner.nextLine();
 
         if (cpf.equals("0")){
-            return null;
+            return "0";
         }
 
         return cpf;
@@ -165,6 +201,7 @@ public class Menu {
         System.out.println("4. Negociar honorários");
         System.out.println("5. Honorários acordados");
         System.out.println("0. Não alterar");
+        System.out.print("Escolha uma opção: ");
 
         int statusCliente = scanner.nextInt();
         scanner.nextLine();
