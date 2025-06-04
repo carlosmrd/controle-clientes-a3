@@ -229,7 +229,7 @@ public class Main {
                     break;
 
                 case 0:
-                    System.out.println("teste");
+                    
                     break;
 
                 default:
