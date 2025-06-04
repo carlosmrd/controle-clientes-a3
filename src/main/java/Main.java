@@ -1,13 +1,24 @@
+import controller.ClienteController;
+import database.ConexaoDB;
 import database.InicializadorDB;
+import model.Cliente;
+import model.ClienteDAO;
 import view.Menu;
+
+import java.sql.Connection;
 
 public class Main {
 
     public static void main(String[] args) {
 
         InicializadorDB.inicializar();
+        Connection conexao = ConexaoDB.conectar();
 
         Menu menu = new Menu();
+
+        ClienteDAO clienteDAO = new ClienteDAO(conexao);
+        ClienteController clienteController =  new ClienteController(clienteDAO);
+
         int opcao;
 
         do {
@@ -15,7 +26,7 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    menuClientes(menu);
+                    menuClientes(menu, clienteController);
                     break;
 
                 case 2:
@@ -34,16 +45,25 @@ public class Main {
                     System.out.println("Opção inválida, tente novamente.");
             }
         } while (opcao != 0);
+
+        ConexaoDB.desconectar(conexao);
     }
 
-    private static void menuClientes(Menu menu) {
+    private static void menuClientes(Menu menu, ClienteController clienteController) {
         int opcao;
         do {
             opcao = menu.exibirMenuClientes();
 
             switch (opcao) {
                 case 1:
+                    System.out.println("\n-- CADASTRAR CLIENTE --");
+                    String nome = menu.lerNomeCliente();
+                    String telefone = menu.lerTelefoneCliente();
+                    String uf = menu.lerUfCliente();
 
+                    Cliente cliente = new Cliente(nome, telefone, uf);
+
+                    clienteController.inserirCliente(cliente);
                     break;
 
                 case 2:

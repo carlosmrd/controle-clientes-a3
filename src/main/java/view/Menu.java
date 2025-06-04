@@ -29,6 +29,21 @@ public class Menu {
         return scanner.nextInt();
     }
 
+    public String lerNomeCliente() {
+        System.out.print("Insira o nome do cliente: ");
+        return scanner.nextLine();
+    }
+
+    public String lerTelefoneCliente() {
+        System.out.print("Insira o telefone do cliente: ");
+        return scanner.nextLine();
+    }
+
+    public String lerUfCliente() {
+        System.out.print("Insira a UF de residência do cliente: ");
+        return scanner.nextLine();
+    }
+
     public int exibirMenuAlterarCliente() {
         System.out.println("\n-- ALTERAR CLIENTE --");
         System.out.println("1. Alterar todos os campos");
