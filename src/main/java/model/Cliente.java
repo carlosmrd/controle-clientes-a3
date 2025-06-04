@@ -8,8 +8,8 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String uf;
-    private String cidade;
-    private String endereco;
+    private String cep;
+    private String complemento;
     private String cpf;
     private String numeroProcesso;
     private int statusCliente;
@@ -17,15 +17,15 @@ public class Cliente {
 
     public Cliente() {}
 
-    public Cliente(int id, String nome, String telefone, String uf, String cidade,
-                   String endereco, String cpf, String numeroProcesso, int statusCliente,
+    public Cliente(int id, String nome, String telefone, String uf, String cep,
+                   String complemento, String cpf, String numeroProcesso, int statusCliente,
                    LocalDateTime dataCadastro) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.uf = uf;
-        this.cidade = cidade;
-        this.endereco = endereco;
+        this.cep = cep;
+        this.complemento = complemento;
         this.cpf = cpf;
         this.numeroProcesso = numeroProcesso;
         this.statusCliente = statusCliente;
@@ -64,20 +64,20 @@ public class Cliente {
         this.uf = uf;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public String getCpf() {
