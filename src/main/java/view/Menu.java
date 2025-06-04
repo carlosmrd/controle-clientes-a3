@@ -273,9 +273,11 @@ public class Menu {
         return opcao;
     }
 
-    public int exibirMenuSelecionarCampoAlterar() {
-        System.out.println("\n-- ALTERAR CLIENTE --");
+    public int exibirMenuSelecionarCampo() {
+        System.out.println("\n-Qual campo deseja alterar?");
         System.out.println("1. Nome");
+        System.out.println("1. Telefone");
+        System.out.println("1. UF");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
 

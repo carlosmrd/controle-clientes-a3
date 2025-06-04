@@ -161,7 +161,7 @@ public class Main {
                         cliente.setNumeroProcesso(numeroProcesso);
                     }
 
-                    //Status do cliente, sempre um entre os pré-estabelecidos
+                    //Situação do cliente, sempre um entre os pré-estabelecidos
                     int statusCliente = menu.lerNovoStatusCliente();
                     if (statusCliente != -1) {
                         cliente.setNumeroProcesso(numeroProcesso);
