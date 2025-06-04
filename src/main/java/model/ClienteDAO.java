@@ -31,6 +31,8 @@ public class ClienteDAO {
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar o cliente: " + e.getMessage());
         }
+
+        System.out.println("Cliente cadastrado com sucesso");
     }
 
     public Cliente buscarClientePorId (int id) {
@@ -90,5 +92,7 @@ public class ClienteDAO {
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar cliente: " + e.getMessage());
         }
+
+        System.out.println("Cliente atualizado com sucesso");
     }
 }
