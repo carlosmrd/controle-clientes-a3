@@ -84,6 +84,11 @@ public class ClienteDAO {
             stmt.setString(5, cliente.getComplemento());
             stmt.setString(6, cliente.getCpf());
             stmt.setString(7, cliente.getNumeroProcesso());
+            stmt.setInt(8, cliente.getStatusCliente());
+            stmt.setInt(9, cliente.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
         }
     }
 }

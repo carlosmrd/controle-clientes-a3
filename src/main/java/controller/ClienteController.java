@@ -19,4 +19,7 @@ public class ClienteController {
         return clienteDAO.buscarClientePorId(id);
     }
 
+    public void atualizarCliente(Cliente cliente) {
+        clienteDAO.atualizarCliente(cliente);
+    }
 }

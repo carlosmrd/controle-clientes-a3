@@ -146,12 +146,12 @@ public class Menu {
     }
 
     public String lerNumeroProcesso() {
-        System.out.print("Insira o número do processo do cliente (0 para deixar em branco): ");
+        System.out.print("Insira o número do processo do cliente (0 para não alterar): ");
 
         String numeroProcesso = scanner.nextLine();
 
         if (numeroProcesso.equals("0")){
-            return null;
+            return "0";
         }
 
         return numeroProcesso;
@@ -190,7 +190,7 @@ public class Menu {
 
     public int exibirMenuSelecionarCampoAlterar() {
         System.out.println("\n-- ALTERAR CLIENTE --");
-
+        System.out.println("1. Nome");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
 

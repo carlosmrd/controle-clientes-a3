@@ -141,6 +141,9 @@ public class Main {
 
                     //Número do processo, nem sempre existe
                     String numeroProcesso = menu.lerNumeroProcesso();
+                    if (!numeroProcesso.equals("0")){
+                        cliente.setNumeroProcesso(numeroProcesso);
+                    }
 
                     //Status do cliente, sempre um entre os pré-estabelecidos
                     int statusCliente = menu.lerStatusCliente();
@@ -148,6 +151,7 @@ public class Main {
                         cliente.setNumeroProcesso(numeroProcesso);
                     }
 
+                    clienteController.atualizarCliente(cliente);
                     break;
 
                 case 2:
