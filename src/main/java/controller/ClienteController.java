@@ -14,4 +14,9 @@ public class ClienteController {
     public void inserirCliente(Cliente cliente) {
         clienteDAO.inserirCliente(cliente);
     }
+
+    public Cliente buscarClientePorId(int id) {
+        return clienteDAO.buscarClientePorId(id);
+    }
+
 }
