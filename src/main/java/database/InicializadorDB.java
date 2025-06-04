@@ -10,7 +10,7 @@ public class InicializadorDB {
     public static void inicializar() {
         String url = "jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true";
         String usuario = "root";
-        String senha = "root";
+        String senha = "1234";
 
         try (Connection conexao = DriverManager.getConnection(url, usuario, senha);
              Statement stmt = conexao.createStatement()) {
@@ -49,8 +49,8 @@ public class InicializadorDB {
                         uf CHAR(2) NOT NULL CHECK (uf IN ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
                                                     'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI',
                                                     'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO')),
-                        cidade VARCHAR(50),
-                        endereco VARCHAR(150),
+                        cep VARCHAR(8),
+                        complemento VARCHAR(150),
                         cpf CHAR(11) UNIQUE,
                         numero_processo VARCHAR(20),
                         status_cliente INT NOT NULL DEFAULT 1,

@@ -12,7 +12,7 @@ public class ConexaoDB {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/controle_clientes_a3?useSSL=false&allowPublicKeyRetrieval=true",
-                    "root", "root");
+                    "root", "1234");
             System.out.println("Conexão com o banco de dados estabelecida.");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver do banco de dados não localizado.");
