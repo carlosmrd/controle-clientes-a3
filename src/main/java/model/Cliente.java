@@ -15,7 +15,11 @@ public class Cliente {
     private int statusCliente;
     private LocalDateTime dataCadastro;
 
-    public Cliente() {}
+    public Cliente(String nome, String telefone, String uf) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.uf = uf;
+    }
 
     public Cliente(int id, String nome, String telefone, String uf, String cep,
                    String complemento, String cpf, String numeroProcesso, int statusCliente,
