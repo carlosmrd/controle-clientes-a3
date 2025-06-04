@@ -55,10 +55,33 @@ public class Main {
                     break;
 
                 case 4:
-
+                    menuAlterarClientes(menu);
                     break;
 
                 case 5:
+
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+            }
+        } while (opcao != 0);
+    }
+
+    private static void menuAlterarClientes(Menu menu) {
+        int opcao;
+        do {
+            opcao = menu.exibirMenuAlterarCliente();
+
+            switch (opcao) {
+                case 1:
+
+                    break;
+
+                case 2:
 
                     break;
 

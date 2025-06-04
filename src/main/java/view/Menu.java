@@ -29,6 +29,16 @@ public class Menu {
         return scanner.nextInt();
     }
 
+    public int exibirMenuAlterarCliente() {
+        System.out.println("\n-- ALTERAR CLIENTE --");
+        System.out.println("1. Alterar todos os campos");
+        System.out.println("2. Selecionar um campo para alterar");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+
+        return scanner.nextInt();
+    }
+
     public int exibirMenuAnotacoes() {
         System.out.println("\n--- ANOTAÇÕES ---");
         System.out.println("1. Criar anotação");
