@@ -140,29 +140,29 @@ public class Main {
                     }
 
                     //Opcionais
-                    String cep = menu.lerCepCliente();
+                    String cep = menu.lerNovoCepCliente();
                     if (!cep.equals("0")){
                         cliente.setCep(cep);
                     }
 
-                    String complemento = menu.lerComplementoCliente();
+                    String complemento = menu.lerNovoComplementoCliente();
                     if (!complemento.equals("0")){
                         cliente.setComplemento(complemento);
                     }
 
-                    String cpf = menu.lerCpfCliente();
+                    String cpf = menu.lerNovoCpfCliente();
                     if (!cpf.equals("0")){
                         cliente.setCpf(cpf);
                     }
 
                     //Número do processo, nem sempre existe
-                    String numeroProcesso = menu.lerNumeroProcesso();
+                    String numeroProcesso = menu.lerNovoNumeroProcesso();
                     if (!numeroProcesso.equals("0")){
                         cliente.setNumeroProcesso(numeroProcesso);
                     }
 
                     //Status do cliente, sempre um entre os pré-estabelecidos
-                    int statusCliente = menu.lerStatusCliente();
+                    int statusCliente = menu.lerNovoStatusCliente();
                     if (statusCliente != -1) {
                         cliente.setNumeroProcesso(numeroProcesso);
                     }

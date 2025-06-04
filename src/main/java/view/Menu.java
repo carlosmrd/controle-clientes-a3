@@ -146,7 +146,19 @@ public class Menu {
     }
 
     public String lerCepCliente() {
-        System.out.print("Insira o CEP do cliente (0 para deixar em branco): ");
+        System.out.print("Insira o CEP do cliente (0 para não inserir): ");
+
+        String cep = scanner.nextLine();
+
+        if (cep.equals("0")){
+            return null;
+        }
+
+        return cep;
+    }
+
+    public String lerNovoCepCliente() {
+        System.out.print("Insira o CEP do cliente (0 para não alterar): ");
 
         String cep = scanner.nextLine();
 
@@ -158,7 +170,19 @@ public class Menu {
     }
 
     public String lerComplementoCliente() {
-        System.out.print("Insira o complemento do endereço (0 para deixar em branco): ");
+        System.out.print("Insira o complemento do endereço (0 para não inserir): ");
+
+        String complemento = scanner.nextLine();
+
+        if (complemento.equals("0")){
+            return null;
+        }
+
+        return complemento;
+    }
+
+    public String lerNovoComplementoCliente() {
+        System.out.print("Insira o complemento do endereço (0 para não alterar): ");
 
         String complemento = scanner.nextLine();
 
@@ -170,6 +194,18 @@ public class Menu {
     }
 
     public String lerCpfCliente() {
+        System.out.print("Insira o CPF do cliente (0 para não inserir): ");
+
+        String cpf = scanner.nextLine();
+
+        if (cpf.equals("0")){
+            return null;
+        }
+
+        return cpf;
+    }
+
+    public String lerNovoCpfCliente() {
         System.out.print("Insira o CPF do cliente (0 para não alterar): ");
 
         String cpf = scanner.nextLine();
@@ -182,6 +218,18 @@ public class Menu {
     }
 
     public String lerNumeroProcesso() {
+        System.out.print("Insira o número do processo do cliente (0 para não inserir): ");
+
+        String numeroProcesso = scanner.nextLine();
+
+        if (numeroProcesso.equals("0")){
+            return null;
+        }
+
+        return numeroProcesso;
+    }
+
+    public String lerNovoNumeroProcesso() {
         System.out.print("Insira o número do processo do cliente (0 para não alterar): ");
 
         String numeroProcesso = scanner.nextLine();
@@ -193,7 +241,7 @@ public class Menu {
         return numeroProcesso;
     }
 
-    public int lerStatusCliente() {
+    public int lerNovoStatusCliente() {
         System.out.println("Insira o status do atendimento do cliente:");
         System.out.println("1. Atendimento inicial");
         System.out.println("2. Agendar reunião");
