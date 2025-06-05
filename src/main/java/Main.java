@@ -7,8 +7,9 @@ import view.Menu;
 
 import java.sql.Connection;
 
-public class Main {
 
+public class Main {
+    
     public static void main(String[] args) {
 
         InicializadorDB.inicializar();
@@ -116,6 +117,7 @@ public class Main {
 
     private static void menuAlterarClientes(Menu menu, ClienteController clienteController, int id) {
         int opcao;
+        
         do {
             opcao = menu.exibirMenuAlterarCliente();
 
@@ -191,11 +193,62 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-
+                    String nome = menu.lerNovoNomeCliente();
+                    if (!nome.equals(0)){
+                        cliente.setNome(nome);
+                    }
                     break;
 
                 case 2:
+                    String telefone = menu.lerNovoTelefoneCliente();
+                        if (!telefone.equals("0")){
+                            cliente.setTelefone(telefone);
+                        }
+                    break;
+                case 3:
+                    String uf = menu.lerNovoUfCliente();
+                    if (!uf.equals("0")){
+                        cliente.setUf(uf);
+                    }
 
+                    break;
+
+                case 4:
+                    String cep = menu.lerNovoCepCliente();
+                    if (!cep.equals("0")){
+                        cliente.setCep(cep);
+                    }
+
+                    break;
+
+                case 5:
+                    String complemento = menu.lerNovoComplementoCliente();
+                    if (!complemento.equals("0")){
+                        cliente.setComplemento(complemento);
+                    }
+                    
+                    break;
+
+                case 6:
+                    String cpf = menu.lerNovoCpfCliente();
+                    if (!cpf.equals("0")){
+                        cliente.setCpf(cpf);
+                    }
+
+                    break;
+
+                case 7:
+                    String numeroProcesso = menu.lerNovoNumeroProcesso();
+                    if (!numeroProcesso.equals("0")){
+                        cliente.setNumeroProcesso(numeroProcesso);
+                    }
+                    break;
+
+                case 8:
+                    int statusCliente = menu.lerNovoStatusCliente();
+                    if (statusCliente != -1) {
+                        cliente.setNumeroProcesso(numeroProcesso);
+                    }
                     break;
 
                 case 0:

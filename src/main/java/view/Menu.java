@@ -278,6 +278,11 @@ public class Menu {
         System.out.println("1. Nome");
         System.out.println("2. Telefone");
         System.out.println("3. UF");
+        System.out.println("4. CEP");
+        System.out.println("5. Complemento");
+        System.out.println("6. CPF");
+        System.out.println("7. Número do Processo");
+        System.out.println("8. Status");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
 
