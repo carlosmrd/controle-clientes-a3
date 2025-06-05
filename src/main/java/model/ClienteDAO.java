@@ -64,7 +64,7 @@ public class ClienteDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("\nErro ao buscar cliente por ID: " + e.getMessage());
+            System.err.println("\nErro ao buscar cliente por ID: " + e.getMessage());
         }
         return null;
     }
@@ -97,20 +97,22 @@ public class ClienteDAO {
             stmt.setInt(9, cliente.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("\nErro ao atualizar cliente: " + e.getMessage());
+            System.err.println("\nErro ao atualizar cliente: " + e.getMessage());
         }
 
         System.out.println("\nCliente atualizado com sucesso");
     }
     public void deletarCliente(Cliente cliente){
-        String str = """
+        String sql = """
             DELETE FROM Cliente 
             WHERE id = ?
         """;
 
-        try (PreparedStatement stmt = conexao.prepareStatement(str)){
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)){
             stmt.setInt(1,cliente.getId());
-            
+        } catch (SQLExceptiontion e) {
+            System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
         }
+        System.out.println("\nCliente deletado com sucesso");
     }
 }
