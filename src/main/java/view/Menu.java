@@ -274,7 +274,7 @@ public class Menu {
     }
 
     public int exibirMenuSelecionarCampo() {
-        System.out.println("\n-Qual campo deseja alterar?");
+        System.out.println("\nQual campo deseja alterar?");
         System.out.println("1. Nome");
         System.out.println("2. Telefone");
         System.out.println("3. UF");
