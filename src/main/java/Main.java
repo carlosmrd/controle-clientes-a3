@@ -166,7 +166,7 @@ public class Main {
                     //Situação do cliente, sempre um entre os pré-estabelecidos
                     int statusCliente = menu.lerNovoStatusCliente();
                     if (statusCliente != -1) {
-                        cliente.setNumeroProcesso(numeroProcesso);
+                        cliente.setStatusCliente(statusCliente);
                     }
 
                     clienteController.atualizarCliente(cliente);
