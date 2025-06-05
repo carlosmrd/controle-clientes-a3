@@ -171,6 +171,30 @@ public class Main {
                     break;
 
                 case 2:
+                    menuSelecionarCampo(menu, clienteController, id);
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+            }
+        } while (opcao != 0);
+    }
+
+    private static void menuSelecionarCampo(Menu menu, ClienteController clienteController, int id) {
+        int opcao;
+        do {
+            opcao = menu.exibirMenuSelecionarCampo();
+            Cliente cliente = clienteController.buscarClientePorId(id);
+
+            switch (opcao) {
+                case 1:
+
+                    break;
+
+                case 2:
 
                     break;
 
