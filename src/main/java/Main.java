@@ -202,18 +202,18 @@ public class Main {
 
                 case 2:
                     String telefone = menu.lerNovoTelefoneCliente();
-                        if (!telefone.equals("0")){
-                            cliente.setTelefone(telefone);
-                            clienteController.atualizarCliente(cliente);
-                        }
+                    if (!telefone.equals("0")){
+                        cliente.setTelefone(telefone);
+                        clienteController.atualizarCliente(cliente);
+                    }
                     break;
+
                 case 3:
                     String uf = menu.lerNovoUfCliente();
                     if (!uf.equals("0")){
                         cliente.setUf(uf);
                         clienteController.atualizarCliente(cliente);
                     }
-
                     break;
 
                 case 4:
@@ -222,7 +222,6 @@ public class Main {
                         cliente.setCep(cep);
                         clienteController.atualizarCliente(cliente);
                     }
-
                     break;
 
                 case 5:
@@ -231,7 +230,6 @@ public class Main {
                         cliente.setComplemento(complemento);
                         clienteController.atualizarCliente(cliente);
                     }
-                    
                     break;
 
                 case 6:
@@ -240,7 +238,6 @@ public class Main {
                         cliente.setCpf(cpf);
                         clienteController.atualizarCliente(cliente);
                     }
-
                     break;
 
                 case 7:
