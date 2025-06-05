@@ -102,4 +102,15 @@ public class ClienteDAO {
 
         System.out.println("\nCliente atualizado com sucesso");
     }
+    public void deletarCliente(Cliente cliente){
+        String str = """
+            DELETE FROM Cliente 
+            WHERE id = ?
+        """;
+
+        try (PreparedStatement stmt = conexao.prepareStatement(str)){
+            stmt.setInt(1,cliente.getId());
+            
+        }
+    }
 }
