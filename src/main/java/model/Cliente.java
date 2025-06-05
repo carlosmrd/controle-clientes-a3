@@ -15,12 +15,14 @@ public class Cliente {
     private int statusCliente;
     private LocalDateTime dataCadastro;
 
+    //Construtor de Cliente somente com dados obrigatórios, usado no cadastro
     public Cliente(String nome, String telefone, String uf) {
         this.nome = nome;
         this.telefone = telefone;
         this.uf = uf;
     }
 
+    //Construtor de Cliente com todos os dados
     public Cliente(int id, String nome, String telefone, String uf, String cep,
                    String complemento, String cpf, String numeroProcesso, int statusCliente,
                    LocalDateTime dataCadastro) {
@@ -36,6 +38,7 @@ public class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
+    //Getters e Setters
     public int getId() {
         return id;
     }

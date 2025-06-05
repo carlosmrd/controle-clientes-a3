@@ -20,7 +20,7 @@ public class ClienteDAO {
                 "complemento, cpf, numero_processo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        //Cria um statement usando a String sql
+        //Cria um statement usando a String sql e os atributos de Cliente
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getTelefone());
@@ -84,7 +84,7 @@ public class ClienteDAO {
             WHERE id = ?
         """;
 
-        //Cria um statement usando a String sql
+        //Cria um statement usando a String sql e os atributos de Cliente
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getTelefone());
