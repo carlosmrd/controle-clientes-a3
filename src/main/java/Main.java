@@ -61,7 +61,7 @@ public class Main {
 
     private static void menuClientes(Menu menu, ClienteController clienteController) {
         int opcao;
-        int id;
+
         do {
             //Exibe o menu "1. Clientes"
             opcao = menu.exibirMenuClientes();
@@ -79,14 +79,12 @@ public class Main {
 
                 case 3:
                     //3. Buscar cliente
-                    id = menu.lerIdCliente();
                     //TODO
                     break;
 
                 case 4:
                     //4. Alterar cliente
-                    id = menu.lerIdCliente();
-                    menuAlterarClientes(menu, clienteController, id);
+                    menuAlterarClientes(menu, clienteController);
                     break;
 
                 case 5:
@@ -104,9 +102,12 @@ public class Main {
         } while (opcao != 0);
     }
 
-    private static void menuAlterarClientes(Menu menu, ClienteController clienteController, int id) {
+    private static void menuAlterarClientes(Menu menu, ClienteController clienteController) {
+        //Recebe o id que será usado para selecionar o cliente para a atualização
+        int id = menu.lerIdCliente();
+
         int opcao;
-        
+
         do {
             //Exibe o submenu "4. Alterar cliente"
             opcao = menu.exibirMenuAlterarCliente();
