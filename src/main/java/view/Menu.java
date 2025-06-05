@@ -201,7 +201,14 @@ public class Menu {
         scanner.nextLine();
         return opcao;
     }
-
+    public int exibirMenuDeletarCliente(){
+        System.out.println("\nDeseja mesmo proceguir?");
+        System.out.println("1. Sim");
+        System.out.println("0. Voltar");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
     //Prompt para retornar nome do cliente, usado em alterações
     public String lerNovoNomeCliente() {
         System.out.print("Insira o nome do cliente (0 para não alterar): ");

@@ -109,7 +109,9 @@ public class ClienteDAO {
         """;
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)){
-            stmt.setInt(1,cliente.getId());
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
         } catch (SQLExceptiontion e) {
             System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
         }

@@ -132,6 +132,26 @@ public class Main {
             }
         } while (opcao != 0);
     }
+    
+    private static void menuDeletarClientes(Menu menu, ClienteController clienteController){
+        int id = menu.lerIdCliente();
+        int opcao;
+        do {
+            opcao = menu.exibirMenuAlterarCliente();
+            switch (opcao) {
+                case 1:
+                    //1.Prossegue 
+                    clienteController.deletarCliente(id);
+                    break;
+                case 0 :
+                    //0.voltar
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+                    break;
+            }
+        } while (opcao!= 0);
+
+    }
 
     private static void menuAnotacoes(Menu menu) {
         //TODO

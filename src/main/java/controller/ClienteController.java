@@ -186,7 +186,11 @@ public class ClienteController {
     public Cliente buscarClientePorId(int id) {
         return clienteDAO.buscarClientePorId(id);
     }
+     //deleta
+    public void deletarCliente( int id){
+        clienteDAO.deletarCliente(id);
 
+    }
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
     //Acho que não vamos precisar usar
     public void atualizarCliente(Cliente cliente) {
