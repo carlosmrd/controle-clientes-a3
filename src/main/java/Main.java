@@ -196,6 +196,7 @@ public class Main {
                     String nome = menu.lerNovoNomeCliente();
                     if (!nome.equals(0)){
                         cliente.setNome(nome);
+                        clienteController.atualizarCliente(cliente);
                     }
                     break;
 
@@ -203,12 +204,14 @@ public class Main {
                     String telefone = menu.lerNovoTelefoneCliente();
                         if (!telefone.equals("0")){
                             cliente.setTelefone(telefone);
+                            clienteController.atualizarCliente(cliente);
                         }
                     break;
                 case 3:
                     String uf = menu.lerNovoUfCliente();
                     if (!uf.equals("0")){
                         cliente.setUf(uf);
+                        clienteController.atualizarCliente(cliente);
                     }
 
                     break;
@@ -217,6 +220,7 @@ public class Main {
                     String cep = menu.lerNovoCepCliente();
                     if (!cep.equals("0")){
                         cliente.setCep(cep);
+                        clienteController.atualizarCliente(cliente);
                     }
 
                     break;
@@ -225,6 +229,7 @@ public class Main {
                     String complemento = menu.lerNovoComplementoCliente();
                     if (!complemento.equals("0")){
                         cliente.setComplemento(complemento);
+                        clienteController.atualizarCliente(cliente);
                     }
                     
                     break;
@@ -233,6 +238,7 @@ public class Main {
                     String cpf = menu.lerNovoCpfCliente();
                     if (!cpf.equals("0")){
                         cliente.setCpf(cpf);
+                        clienteController.atualizarCliente(cliente);
                     }
 
                     break;
@@ -241,13 +247,15 @@ public class Main {
                     String numeroProcesso = menu.lerNovoNumeroProcesso();
                     if (!numeroProcesso.equals("0")){
                         cliente.setNumeroProcesso(numeroProcesso);
+                        clienteController.atualizarCliente(cliente);
                     }
                     break;
 
                 case 8:
                     int statusCliente = menu.lerNovoStatusCliente();
                     if (statusCliente != -1) {
-                        cliente.setNumeroProcesso(numeroProcesso);
+                        cliente.setStatusCliente(statusCliente);
+                        clienteController.atualizarCliente(cliente);
                     }
                     break;
 
