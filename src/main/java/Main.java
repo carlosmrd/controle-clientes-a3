@@ -1,7 +1,6 @@
 import controller.ClienteController;
 import database.ConexaoDB;
 import database.InicializadorDB;
-import model.Cliente;
 import model.ClienteDAO;
 import view.Menu;
 
@@ -12,33 +11,43 @@ public class Main {
     
     public static void main(String[] args) {
 
+        //Estabelece uma conexão e cria o banco de dados caso ele ainda não exista.
         InicializadorDB.inicializar();
+        //Estabelece uma conexão com o banco de dados.
         Connection conexao = ConexaoDB.conectar();
-
+        //Cria uma instância do menu para ser chamado durante a navegação no Main.
         Menu menu = new Menu();
-
+        //Cria uma instância dos DAO de Cliente, Lembrete e Anotacao, com a
+        //conexão como parâmetro, para acesso a cada tabela do banco de dados.
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
+        //Cria uma instância dos Controller de Cliente, Lembrete e Anotacao, com os
+        //DAO como parâmetro, para as funções relacionadas a cada tabela.
         ClienteController clienteController =  new ClienteController(clienteDAO);
 
         int opcao;
 
         do {
+            //Exibe o menu principal
             opcao = menu.exibirMenuPrincipal();
 
             switch (opcao) {
                 case 1:
+                    //1. Clientes
                     menuClientes(menu, clienteController);
                     break;
 
                 case 2:
+                    //2. Anotações
                     menuAnotacoes(menu);
                     break;
 
                 case 3:
+                    //3. Lembretes
                     menuLembretes(menu);
                     break;
 
                 case 0:
+                    //0. Voltar
                     System.out.println("Encerrando o sistema.");
                     break;
 
@@ -54,59 +63,39 @@ public class Main {
         int opcao;
         int id;
         do {
+            //Exibe o menu "1. Clientes"
             opcao = menu.exibirMenuClientes();
 
             switch (opcao) {
                 case 1:
-                    //Obrigatórios
-                    String nome = menu.lerNomeCliente();
-                    String telefone = menu.lerTelefoneCliente();
-                    String uf = menu.lerUfCliente();
-
-                    Cliente cliente = new Cliente(nome, telefone, uf);
-
-                    //Opcionais
-                    boolean opcionais = menu.inserirDadosOpcionais();
-
-                    if (opcionais) {
-                        String cep = menu.lerCepCliente();
-                        String complemento = menu.lerComplementoCliente();
-                        String cpf = menu.lerCpfCliente();
-                        cliente.setCep(cep);
-                        cliente.setComplemento(complemento);
-                        cliente.setCpf(cpf);
-                    }
-
-                    //Número do processo, nem sempre existe
-                    boolean opcionalProcesso = menu.inserirNumeroProcesso();
-
-                    if (opcionalProcesso) {
-                        String numeroProcesso = menu.lerNumeroProcesso();
-                        cliente.setNumeroProcesso(numeroProcesso);
-                    }
-
-                    clienteController.inserirCliente(cliente);
+                    //1. Cadastrar cliente
+                    clienteController.cadastrarCliente(menu);
                     break;
 
                 case 2:
-
+                    //2. Listar clientes
+                    //TODO
                     break;
 
                 case 3:
+                    //3. Buscar cliente
                     id = menu.lerIdCliente();
                     //TODO
                     break;
 
                 case 4:
+                    //4. Alterar cliente
                     id = menu.lerIdCliente();
                     menuAlterarClientes(menu, clienteController, id);
                     break;
 
                 case 5:
-
+                    //5. Excluir cliente
+                    //TODO
                     break;
 
                 case 0:
+                    //0. Voltar
                     break;
 
                 default:
@@ -119,144 +108,22 @@ public class Main {
         int opcao;
         
         do {
+            //Exibe o submenu "4. Alterar cliente"
             opcao = menu.exibirMenuAlterarCliente();
 
             switch (opcao) {
                 case 1:
-                    Cliente cliente = clienteController.buscarClientePorId(id);
-
-                    //Obrigatórios
-                    String nome = menu.lerNovoNomeCliente();
-                    if (!nome.equals("0")){
-                        cliente.setNome(nome);
-                    }
-
-                    String telefone = menu.lerNovoTelefoneCliente();
-                    if (!telefone.equals("0")){
-                        cliente.setTelefone(telefone);
-                    }
-
-                    String uf = menu.lerNovoUfCliente();
-                    if (!uf.equals("0")){
-                        cliente.setUf(uf);
-                    }
-
-                    //Opcionais
-                    String cep = menu.lerNovoCepCliente();
-                    if (!cep.equals("0")){
-                        cliente.setCep(cep);
-                    }
-
-                    String complemento = menu.lerNovoComplementoCliente();
-                    if (!complemento.equals("0")){
-                        cliente.setComplemento(complemento);
-                    }
-
-                    String cpf = menu.lerNovoCpfCliente();
-                    if (!cpf.equals("0")){
-                        cliente.setCpf(cpf);
-                    }
-
-                    //Número do processo, nem sempre existe
-                    String numeroProcesso = menu.lerNovoNumeroProcesso();
-                    if (!numeroProcesso.equals("0")){
-                        cliente.setNumeroProcesso(numeroProcesso);
-                    }
-
-                    //Situação do cliente, sempre um entre os pré-estabelecidos
-                    int statusCliente = menu.lerNovoStatusCliente();
-                    if (statusCliente != -1) {
-                        cliente.setStatusCliente(statusCliente);
-                    }
-
-                    clienteController.atualizarCliente(cliente);
+                    //1. Alterar todos os campos
+                    clienteController.alterarCliente01(menu, id);
                     break;
 
                 case 2:
-                    menuSelecionarCampo(menu, clienteController, id);
+                    //2. Selecionar um campo para alterar
+                    clienteController.alterarCliente02(menu, id);
                     break;
 
                 case 0:
-                    break;
-
-                default:
-                    System.out.println("Opção inválida, tente novamente.");
-            }
-        } while (opcao != 0);
-    }
-
-    private static void menuSelecionarCampo(Menu menu, ClienteController clienteController, int id) {
-        int opcao;
-        do {
-            opcao = menu.exibirMenuSelecionarCampo();
-            Cliente cliente = clienteController.buscarClientePorId(id);
-
-            switch (opcao) {
-                case 1:
-                    String nome = menu.lerNovoNomeCliente();
-                    if (!nome.equals(0)){
-                        cliente.setNome(nome);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 2:
-                    String telefone = menu.lerNovoTelefoneCliente();
-                    if (!telefone.equals("0")){
-                        cliente.setTelefone(telefone);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 3:
-                    String uf = menu.lerNovoUfCliente();
-                    if (!uf.equals("0")){
-                        cliente.setUf(uf);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 4:
-                    String cep = menu.lerNovoCepCliente();
-                    if (!cep.equals("0")){
-                        cliente.setCep(cep);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 5:
-                    String complemento = menu.lerNovoComplementoCliente();
-                    if (!complemento.equals("0")){
-                        cliente.setComplemento(complemento);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 6:
-                    String cpf = menu.lerNovoCpfCliente();
-                    if (!cpf.equals("0")){
-                        cliente.setCpf(cpf);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 7:
-                    String numeroProcesso = menu.lerNovoNumeroProcesso();
-                    if (!numeroProcesso.equals("0")){
-                        cliente.setNumeroProcesso(numeroProcesso);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 8:
-                    int statusCliente = menu.lerNovoStatusCliente();
-                    if (statusCliente != -1) {
-                        cliente.setStatusCliente(statusCliente);
-                        clienteController.atualizarCliente(cliente);
-                    }
-                    break;
-
-                case 0:
+                    //0. Voltar
                     break;
 
                 default:
@@ -266,6 +133,7 @@ public class Main {
     }
 
     private static void menuAnotacoes(Menu menu) {
+        //TODO
         int opcao;
         do {
             opcao = menu.exibirMenuAnotacoes();
@@ -301,6 +169,7 @@ public class Main {
     }
 
     private static void menuLembretes(Menu menu) {
+        //TODO
         int opcao;
         do {
             opcao = menu.exibirMenuLembretes();

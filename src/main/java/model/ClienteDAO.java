@@ -9,16 +9,19 @@ public class ClienteDAO {
 
     private Connection conexao;
 
+    //Construtor para o DAO, recebe a conexão instanciada no Main
     public ClienteDAO(Connection conexao) {
         this.conexao = conexao;
     }
 
-    public void inserirCliente(Cliente cliente) {
-        String sqlInsert = "INSERT INTO Cliente (nome, telefone, uf, cep," +
+    //Insere os atributos de um objeto Cliente como linha na tabela Cliente
+    public void cadastrarCliente(Cliente cliente) {
+        String sql = "INSERT INTO Cliente (nome, telefone, uf, cep," +
                 "complemento, cpf, numero_processo) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement stmt = conexao.prepareStatement(sqlInsert)) {
+        //Cria um statement usando a String sql
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getTelefone());
             stmt.setString(3, cliente.getUf());
@@ -29,15 +32,17 @@ public class ClienteDAO {
             stmt.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println("Erro ao cadastrar o cliente: " + e.getMessage());
+            System.out.println("\nErro ao cadastrar o cliente: " + e.getMessage());
         }
 
-        System.out.println("Cliente cadastrado com sucesso");
+        System.out.println("\nCliente cadastrado com sucesso");
     }
 
+    //Retorna um objeto Cliente de acordo com uma linha na tabela Cliente, especificada pelo ID
     public Cliente buscarClientePorId (int id) {
         String sql = "SELECT * FROM Cliente WHERE id = ?";
 
+        //Cria um statement usando a String sql
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setInt(1, id);
 
@@ -59,11 +64,12 @@ public class ClienteDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao buscar cliente por ID: " + e.getMessage());
+            System.out.println("\nErro ao buscar cliente por ID: " + e.getMessage());
         }
         return null;
     }
 
+    //Atualiza uma linha na tabela Cliente, conforme os atributos de um objeto Cliente
     public void atualizarCliente(Cliente cliente) {
         String sql = """
             UPDATE Cliente SET
@@ -78,6 +84,7 @@ public class ClienteDAO {
             WHERE id = ?
         """;
 
+        //Cria um statement usando a String sql
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getTelefone());
@@ -90,9 +97,9 @@ public class ClienteDAO {
             stmt.setInt(9, cliente.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
+            System.out.println("\nErro ao atualizar cliente: " + e.getMessage());
         }
 
-        System.out.println("Cliente atualizado com sucesso");
+        System.out.println("\nCliente atualizado com sucesso");
     }
 }

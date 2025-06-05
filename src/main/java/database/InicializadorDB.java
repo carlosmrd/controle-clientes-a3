@@ -12,15 +12,19 @@ public class InicializadorDB {
         String usuario = "root";
         String senha = "1234";
 
+        //Estabelece conexão com o banco de dados
         try (Connection conexao = DriverManager.getConnection(url, usuario, senha);
              Statement stmt = conexao.createStatement()) {
 
+            //Cria DB "controle_clientes_a3" caso não exista
             String sqlCriarDB = "CREATE DATABASE IF NOT EXISTS controle_clientes_a3";
             stmt.executeUpdate(sqlCriarDB);
             System.out.println("Banco de dados 'controle_clientes_a3' verificado/criado.");
 
+            //Seleciona DB para uso
             stmt.execute("USE controle_clientes_a3");
 
+            //Cria tabela StatusCliente caso não exista
             String sqlCriarTabela = """
                     CREATE TABLE IF NOT EXISTS StatusCliente(
                         codigo INT PRIMARY KEY,
@@ -30,6 +34,7 @@ public class InicializadorDB {
             stmt.executeUpdate(sqlCriarTabela);
             System.out.println("Tabela 'StatusCliente' verificada/criada.");
 
+            //Insere os dados iniciais da tabela StatusCliente
             String sqlAtualizarTabela = """
                     INSERT IGNORE INTO StatusCliente (codigo, descricao_status) VALUES
                         (1, 'Atendimento inicial'),
@@ -41,6 +46,7 @@ public class InicializadorDB {
             stmt.executeUpdate(sqlAtualizarTabela);
             System.out.println("Dados da tabela 'StatusCliente' verificados/criados.");
 
+            //Cria tabela Cliente caso não exista
             sqlCriarTabela = """
                     CREATE TABLE IF NOT EXISTS Cliente(
                         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -62,6 +68,7 @@ public class InicializadorDB {
             stmt.executeUpdate(sqlCriarTabela);
             System.out.println("Tabela 'Cliente' verificada/criada.");
 
+            //Cria tabela Anotacao caso não exista
             sqlCriarTabela = """
                     CREATE TABLE IF NOT EXISTS Anotacao(
                         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -75,6 +82,7 @@ public class InicializadorDB {
             stmt.executeUpdate(sqlCriarTabela);
             System.out.println("Tabela 'Anotacao' verificada/criada.");
 
+            //Cria tabela Lembrete caso não exista
             sqlCriarTabela = """
                     CREATE TABLE IF NOT EXISTS Lembrete (
                         id INT PRIMARY KEY AUTO_INCREMENT,
@@ -90,9 +98,6 @@ public class InicializadorDB {
 
         } catch (SQLException e) {
             System.out.println("Erro ao inicializar o banco de dados: " + e.getMessage());
-            e.printStackTrace();
         }
-
     }
-
 }
