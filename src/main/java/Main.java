@@ -79,7 +79,11 @@ public class Main {
 
                 case 3:
                     //3. Buscar cliente
-                    clienteController.buscarCliente(menu);
+                    try {
+                        clienteController.buscarCliente(menu);
+                    } catch (Exception e) {
+                        System.err.println("Erro ao buscar o cliente especificado: " + e + "\n");
+                    }
                     //TODO
                     break;
 
