@@ -60,7 +60,6 @@ public class ClienteDAO {
                         rs.getTimestamp("data_cadastro").toLocalDateTime()
                 );
             }
-
         } catch (SQLException e) {
             System.err.println("\nErro ao buscar cliente por ID: " + e.getMessage());
         }
@@ -94,24 +93,23 @@ public class ClienteDAO {
             stmt.setInt(8, cliente.getStatusCliente());
             stmt.setInt(9, cliente.getId());
             stmt.executeUpdate();
+            System.out.println("\nCliente atualizado com sucesso");
         } catch (SQLException e) {
             System.err.println("\nErro ao atualizar cliente: " + e.getMessage());
         }
-
-        System.out.println("\nCliente atualizado com sucesso");
     }
 
+    //Deleta uma linha na tabela Cliente, conforme o id de um objeto Cliente
     public void deletarCliente(Cliente cliente){
         String sql = "DELETE FROM Cliente WHERE id = ?";
 
+        //Cria um statement usando a String sql
         try (PreparedStatement stmt = conexao.prepareStatement(sql)){
             stmt.setInt(1, cliente.getId());
-
             stmt.executeUpdate();
-
+            System.out.println("\nCliente deletado com sucesso");
         } catch (SQLException e) {
             System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
         }
-        System.out.println("\nCliente deletado com sucesso");
     }
 }
