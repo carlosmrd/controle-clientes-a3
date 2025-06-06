@@ -4,6 +4,8 @@ import model.Cliente;
 import model.ClienteDAO;
 import view.Menu;
 
+import java.time.format.DateTimeFormatter;
+
 public class ClienteController {
 
     private ClienteDAO clienteDAO;
@@ -42,6 +44,23 @@ public class ClienteController {
             cliente.setNumeroProcesso(numeroProcesso);
         }
         clienteDAO.cadastrarCliente(cliente);
+    }
+
+    public void buscarCliente(Menu menu) {
+        Cliente cliente = buscarClientePorId(menu.lerIdCliente());
+
+        System.out.println("\nID: " + cliente.getId());
+        System.out.println("Nome: " + cliente.getNome());
+        System.out.println("Telefone: " + cliente.getTelefone());
+        System.out.println("UF: " +  cliente.getUf());
+        System.out.println("CEP: " + (cliente.getCep() != null ? cliente.getCep() : "N/A"));
+        System.out.println("Complemento: " + (cliente.getComplemento() != null ? cliente.getComplemento() : "N/A"));
+        System.out.println("CPF: " + (cliente.getCpf() != null ? cliente.getCpf() : "N/A"));
+        System.out.println("Número do processo: " + (cliente.getNumeroProcesso() != null ? cliente.getNumeroProcesso() : "N/A"));
+        System.out.println("Status do atendimento: " + cliente.getDescricaoStatus());
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        System.out.println("Data do cadastro: " + cliente.getDataCadastro().format(formatter));
     }
 
     //Alterar dados em todos os campos
@@ -185,6 +204,7 @@ public class ClienteController {
     //Retorna cliente específico, localizado pelo ID no banco de dados
     public Cliente buscarClientePorId(int id) {
         return clienteDAO.buscarClientePorId(id);
+        //TODO tratamento de exceção caso o cliente retorne null
     }
 
     //deleta

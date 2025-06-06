@@ -15,6 +15,10 @@ public class Cliente {
     private int statusCliente;
     private LocalDateTime dataCadastro;
 
+    //Não é usado pelo construtor do objeto cliente, mas serve para retornar
+    //a descrição do status_cliente, que faz parte de uma tabela diferente no banco.
+    private String descricaoStatus;
+
     //Construtor de Cliente somente com dados obrigatórios, usado no cadastro
     public Cliente(String nome, String telefone, String uf) {
         this.nome = nome;
@@ -117,5 +121,13 @@ public class Cliente {
 
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public String getDescricaoStatus() {
+        return descricaoStatus;
+    }
+
+    public void setDescricaoStatus(String descricaoStatus) {
+        this.descricaoStatus = descricaoStatus;
     }
 }

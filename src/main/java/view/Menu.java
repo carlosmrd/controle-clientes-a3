@@ -36,6 +36,15 @@ public class Menu {
         return opcao;
     }
 
+    //Prompt para retornar ID do cliente
+    public int lerIdCliente() {
+        System.out.print("\nInsira o ID do cliente: ");
+
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
+    }
+
     //Prompt para retornar nome do cliente, usado no cadastro
     public String lerNomeCliente() {
         System.out.print("Insira o nome do cliente: ");
@@ -96,15 +105,6 @@ public class Menu {
         }
 
         return cep;
-    }
-
-    //Prompt para retornar ID do cliente
-    public int lerIdCliente() {
-        System.out.print("Insira o ID do cliente: ");
-
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        return id;
     }
 
     //Prompt para retornar CPF do cliente, usado no cadastro
@@ -193,20 +193,7 @@ public class Menu {
         System.out.println("5. Complemento");
         System.out.println("6. CPF");
         System.out.println("7. Número do Processo");
-        System.out.println("8. Status");
-        System.out.println("0. Voltar");
-        System.out.print("Escolha uma opção: ");
-
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
-    }
-
-    //Submenu "//5. Excluir cliente"
-    public int exibirMenuDeletarCliente(){
-        System.out.println("\n-- DELETAR CLIENTE --");
-        System.out.println("Deseja mesmo prosseguir?");
-        System.out.println("1. Sim");
+        System.out.println("8. Status do atendimento");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
 
@@ -325,6 +312,19 @@ public class Menu {
         }
 
         return statusCliente;
+    }
+
+    //Submenu "//5. Excluir cliente"
+    public int exibirMenuDeletarCliente(){
+        System.out.println("\n-- DELETAR CLIENTE --");
+        System.out.println("Deseja mesmo prosseguir?");
+        System.out.println("1. Sim");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
     }
 
     //Menu "2. Anotações"

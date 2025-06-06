@@ -16,9 +16,17 @@ public class ClienteDAO {
 
     //Insere os atributos de um objeto Cliente como linha na tabela Cliente
     public void cadastrarCliente(Cliente cliente) {
-        String sql = "INSERT INTO Cliente (nome, telefone, uf, cep," +
-                "complemento, cpf, numero_processo) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = """
+            INSERT INTO Cliente (
+                nome,
+                telefone,
+                uf,
+                cep,
+                complemento,
+                cpf,
+                numero_processo)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """;
 
         //Cria um statement usando a String sql e os atributos de Cliente
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -38,7 +46,23 @@ public class ClienteDAO {
 
     //Retorna um objeto Cliente de acordo com uma linha na tabela Cliente, especificada pelo ID
     public Cliente buscarClientePorId (int id) {
-        String sql = "SELECT * FROM Cliente WHERE id = ?";
+        String sql = """
+            SELECT
+                c.id,
+                c.nome,
+                c.telefone,
+                c.uf,
+                c.cep,
+                c.complemento,
+                c.cpf,
+                c.numero_processo,
+                c.status_cliente,
+                c.data_cadastro,
+                s.descricao_status
+            FROM Cliente c
+            JOIN StatusCliente s ON c.status_cliente = s.codigo
+            WHERE c.id = ?
+        """;
 
         //Cria um statement usando a String sql
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -47,7 +71,7 @@ public class ClienteDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return new Cliente(
+                Cliente cliente = new Cliente (
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("telefone"),
@@ -59,6 +83,11 @@ public class ClienteDAO {
                         rs.getInt("status_cliente"),
                         rs.getTimestamp("data_cadastro").toLocalDateTime()
                 );
+
+                //Não usa o construtor aqui, somente o setter, já que só é usado para exibir
+                //o "descricao_status" para o usuário.
+                cliente.setDescricaoStatus(rs.getString("descricao_status"));
+                return cliente;
             }
         } catch (SQLException e) {
             System.err.println("\nErro ao buscar cliente por ID: " + e.getMessage());

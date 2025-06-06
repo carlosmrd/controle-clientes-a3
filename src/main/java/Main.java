@@ -79,6 +79,7 @@ public class Main {
 
                 case 3:
                     //3. Buscar cliente
+                    clienteController.buscarCliente(menu);
                     //TODO
                     break;
 
