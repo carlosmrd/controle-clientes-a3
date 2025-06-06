@@ -17,10 +17,10 @@ public class Main {
         Connection conexao = ConexaoDB.conectar();
         //Cria uma instância do menu para ser chamado durante a navegação no Main.
         Menu menu = new Menu();
-        //Cria uma instância dos DAO de Cliente, Lembrete e Anotacao, com a
+        //Cria uma instância dos DAO de Cliente, Lembrete e Anotacão, com a
         //conexão como parâmetro, para acesso a cada tabela do banco de dados.
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
-        //Cria uma instância dos Controller de Cliente, Lembrete e Anotacao, com os
+        //Cria uma instância dos Controller de Cliente, Lembrete e Anotacão, com os
         //DAO como parâmetro, para as funções relacionadas a cada tabela.
         ClienteController clienteController =  new ClienteController(clienteDAO);
 
@@ -135,23 +135,23 @@ public class Main {
     
     private static void menuDeletarClientes(Menu menu, ClienteController clienteController){
         int id = menu.lerIdCliente();
-        
-        int opcao;
-        do {
-            opcao = menu.exibirMenuDeletarCliente();
-            switch (opcao) {
-                case 1:
-                    //1.Prossegue 
-                    clienteController.deletarCliente(id);
-                    break;
-                case 0 :
-                    //0.voltar
-                default:
-                    System.out.println("Opção inválida, tente novamente.");
-                    break;
-            }
-        } while (opcao!= 0);
 
+        int opcao;
+
+        //Exibe o submenu "Deseja mesmo prosseguir?"
+        opcao = menu.exibirMenuDeletarCliente();
+        switch (opcao) {
+            case 1:
+                //1. Prosseguir
+                clienteController.deletarCliente(id);
+                break;
+            case 0 :
+                //0. Voltar
+                break;
+            default:
+                System.out.println("Opção inválida, tente novamente.");
+                break;
+        }
     }
 
     private static void menuAnotacoes(Menu menu) {

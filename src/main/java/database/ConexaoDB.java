@@ -8,7 +8,7 @@ public class ConexaoDB {
 
     //Estabelece conexão com o banco de dados, a ser usado pelos DAO
     public static Connection conectar() {
-        String url = "jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true";
+        String url = "jdbc:mysql://localhost:3306/controle_clientes_a3?useSSL=false&allowPublicKeyRetrieval=true";
         String usuario = "root";
         String senha = "1234";
 
@@ -16,8 +16,7 @@ public class ConexaoDB {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection(url,
-                    usuario, senha);
+            conexao = DriverManager.getConnection(url, usuario, senha);
             System.out.println("Conexão com o banco de dados estabelecida.");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver do banco de dados não localizado.");
@@ -38,5 +37,4 @@ public class ConexaoDB {
             System.err.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
         }
     }
-
 }

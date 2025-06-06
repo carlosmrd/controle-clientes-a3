@@ -172,9 +172,12 @@ public class Menu {
 
     //Submenu "//5. Excluir cliente"
     public int exibirMenuDeletarCliente(){
-        System.out.println("\nDeseja mesmo prosseguir?");
+        System.out.println("\n-- DELETAR CLIENTE --");
+        System.out.println("Deseja mesmo prosseguir?");
         System.out.println("1. Sim");
         System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+
         int opcao = scanner.nextInt();
         scanner.nextLine();
         return opcao;

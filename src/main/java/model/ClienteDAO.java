@@ -30,12 +30,10 @@ public class ClienteDAO {
             stmt.setString(6, cliente.getCpf());
             stmt.setString(7, cliente.getNumeroProcesso());
             stmt.executeUpdate();
-
+            System.out.println("\nCliente cadastrado com sucesso");
         } catch (Exception e) {
             System.err.println("\nErro ao cadastrar o cliente: " + e.getMessage());
         }
-
-        System.out.println("\nCliente cadastrado com sucesso");
     }
 
     //Retorna um objeto Cliente de acordo com uma linha na tabela Cliente, especificada pelo ID
@@ -104,15 +102,13 @@ public class ClienteDAO {
     }
 
     public void deletarCliente(Cliente cliente){
-        String sql = """
-            DELETE FROM Cliente 
-            WHERE id = ?
-        """;
+        String sql = "DELETE FROM Cliente WHERE id = ?";
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)){
             stmt.setInt(1, cliente.getId());
 
-            ResultSet rs = stmt.executeQuery();
+            stmt.executeUpdate();
+
         } catch (SQLException e) {
             System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
         }
