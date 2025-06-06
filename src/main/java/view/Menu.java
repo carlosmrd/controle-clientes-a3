@@ -170,19 +170,6 @@ public class Menu {
         return numeroProcesso;
     }
 
-    //Submenu "//5. Excluir cliente"
-    public int exibirMenuDeletarCliente(){
-        System.out.println("\n-- DELETAR CLIENTE --");
-        System.out.println("Deseja mesmo prosseguir?");
-        System.out.println("1. Sim");
-        System.out.println("0. Voltar");
-        System.out.print("Escolha uma opção: ");
-
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
-    }
-
     //Submenu "//4. Alterar cliente"
     public int exibirMenuAlterarCliente() {
         System.out.println("\n-- ALTERAR CLIENTE --");
@@ -207,6 +194,19 @@ public class Menu {
         System.out.println("6. CPF");
         System.out.println("7. Número do Processo");
         System.out.println("8. Status");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
+
+    //Submenu "//5. Excluir cliente"
+    public int exibirMenuDeletarCliente(){
+        System.out.println("\n-- DELETAR CLIENTE --");
+        System.out.println("Deseja mesmo prosseguir?");
+        System.out.println("1. Sim");
         System.out.println("0. Voltar");
         System.out.print("Escolha uma opção: ");
 
