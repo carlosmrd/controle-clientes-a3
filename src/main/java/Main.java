@@ -84,7 +84,6 @@ public class Main {
                     } catch (Exception e) {
                         System.err.println("Erro ao buscar o cliente especificado: " + e + "\n");
                     }
-                    //TODO
                     break;
 
                 case 4:
