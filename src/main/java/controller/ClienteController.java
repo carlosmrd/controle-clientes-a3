@@ -207,12 +207,17 @@ public class ClienteController {
         //TODO tratamento de exceção caso o cliente retorne null
     }
 
-    //deleta
+    //Deleta cliente específico, localizado pelo ID no banco de dados
     public void deletarCliente(int id) {
-        //Instância de Cliente para ser excluído.
-        Cliente cliente = buscarClientePorId(id);
-        clienteDAO.deletarCliente(cliente);
+        try {
+            //Instância de Cliente para ser excluído.
+            Cliente cliente = buscarClientePorId(id);
+            clienteDAO.deletarCliente(cliente);
+        } catch (Exception e) {
+            System.err.println("Erro ao deletar o cliente especificado: " + e);
+        }
     }
+
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
     //Acho que não vamos precisar usar
     public void atualizarCliente(Cliente cliente) {
