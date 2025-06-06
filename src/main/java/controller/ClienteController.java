@@ -186,10 +186,12 @@ public class ClienteController {
     public Cliente buscarClientePorId(int id) {
         return clienteDAO.buscarClientePorId(id);
     }
-     //deleta
-    public void deletarCliente( int id){
-        clienteDAO.deletarCliente(id);
 
+    //deleta
+    public void deletarCliente(int id) {
+        //Instância de Cliente para ser excluído.
+        Cliente cliente = buscarClientePorId(id);
+        clienteDAO.deletarCliente(cliente);
     }
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
     //Acho que não vamos precisar usar

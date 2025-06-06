@@ -170,6 +170,16 @@ public class Menu {
         return numeroProcesso;
     }
 
+    //Submenu "//5. Excluir cliente"
+    public int exibirMenuDeletarCliente(){
+        System.out.println("\nDeseja mesmo prosseguir?");
+        System.out.println("1. Sim");
+        System.out.println("0. Voltar");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
+
     //Submenu "//4. Alterar cliente"
     public int exibirMenuAlterarCliente() {
         System.out.println("\n-- ALTERAR CLIENTE --");
@@ -201,14 +211,7 @@ public class Menu {
         scanner.nextLine();
         return opcao;
     }
-    public int exibirMenuDeletarCliente(){
-        System.out.println("\nDeseja mesmo proceguir?");
-        System.out.println("1. Sim");
-        System.out.println("0. Voltar");
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
-    }
+
     //Prompt para retornar nome do cliente, usado em alterações
     public String lerNovoNomeCliente() {
         System.out.print("Insira o nome do cliente (0 para não alterar): ");

@@ -89,7 +89,7 @@ public class Main {
 
                 case 5:
                     //5. Excluir cliente
-                    //TODO
+                    menuDeletarClientes(menu, clienteController);
                     break;
 
                 case 0:

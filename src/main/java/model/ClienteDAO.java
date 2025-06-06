@@ -102,6 +102,7 @@ public class ClienteDAO {
 
         System.out.println("\nCliente atualizado com sucesso");
     }
+
     public void deletarCliente(Cliente cliente){
         String sql = """
             DELETE FROM Cliente 
@@ -109,10 +110,10 @@ public class ClienteDAO {
         """;
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)){
-            stmt.setInt(1, id);
+            stmt.setInt(1, cliente.getId());
 
             ResultSet rs = stmt.executeQuery();
-        } catch (SQLExceptiontion e) {
+        } catch (SQLException e) {
             System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
         }
         System.out.println("\nCliente deletado com sucesso");
