@@ -32,7 +32,7 @@ public class ClienteDAO {
             stmt.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println("\nErro ao cadastrar o cliente: " + e.getMessage());
+            System.err.println("\nErro ao cadastrar o cliente: " + e.getMessage());
         }
 
         System.out.println("\nCliente cadastrado com sucesso");

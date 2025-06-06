@@ -135,9 +135,10 @@ public class Main {
     
     private static void menuDeletarClientes(Menu menu, ClienteController clienteController){
         int id = menu.lerIdCliente();
+        
         int opcao;
         do {
-            opcao = menu.exibirMenuAlterarCliente();
+            opcao = menu.exibirMenuDeletarCliente();
             switch (opcao) {
                 case 1:
                     //1.Prossegue 
