@@ -20,7 +20,7 @@ public class Cliente {
     private String descricaoStatus;
 
     //Construtor de Cliente somente com dados obrigatórios, usado no cadastro
-    public Cliente(String nome, String telefone, String uf) {
+    public Cliente (String nome, String telefone, String uf) {
         this.nome = nome;
         this.telefone = telefone;
         this.uf = uf;
