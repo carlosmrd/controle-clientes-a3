@@ -1,6 +1,7 @@
 import controller.ClienteController;
 import database.ConexaoDB;
 import database.InicializadorDB;
+import model.Cliente;
 import model.ClienteDAO;
 import view.Menu;
 
@@ -79,11 +80,7 @@ public class Main {
 
                 case 3:
                     //3. Buscar cliente
-                    try {
-                        clienteController.buscarCliente(menu);
-                    } catch (Exception e) {
-                        System.err.println("Erro ao buscar o cliente especificado: " + e + "\n");
-                    }
+                    clienteController.buscarCliente(menu);
                     break;
 
                 case 4:
@@ -110,6 +107,14 @@ public class Main {
         //Recebe o id que será usado para selecionar o cliente para a atualização
         int id = menu.lerIdCliente();
 
+        //Instância de Cliente para receber novos dados.
+        Cliente cliente = clienteController.buscarClientePorId(id);
+
+        if (cliente == null) {
+            System.err.println("Cliente não encontrado.\n");
+            return;
+        }
+
         int opcao;
 
         do {
@@ -119,12 +124,12 @@ public class Main {
             switch (opcao) {
                 case 1:
                     //1. Alterar todos os campos
-                    clienteController.alterarCliente01(menu, id);
+                    clienteController.alterarCliente01(menu, cliente);
                     break;
 
                 case 2:
                     //2. Selecionar um campo para alterar
-                    clienteController.alterarCliente02(menu, id);
+                    clienteController.alterarCliente02(menu, cliente);
                     break;
 
                 case 0:

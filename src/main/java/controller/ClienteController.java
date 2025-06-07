@@ -47,7 +47,14 @@ public class ClienteController {
     }
 
     public void buscarCliente(Menu menu) {
+
+        //Instância de cliente para ser exibida
         Cliente cliente = buscarClientePorId(menu.lerIdCliente());
+
+        if (cliente == null) {
+            System.err.println("Cliente não encontrado.\n");
+            return;
+        }
 
         System.out.println("\nID: " + cliente.getId());
         System.out.println("Nome: " + cliente.getNome());
@@ -64,10 +71,12 @@ public class ClienteController {
     }
 
     //Alterar dados em todos os campos
-    public void alterarCliente01(Menu menu, int id) {
+    public void alterarCliente01(Menu menu, Cliente cliente) {
 
-        //Instância de Cliente para receber novos dados.
-        Cliente cliente = buscarClientePorId(id);
+        if (cliente == null) {
+            System.err.println("Cliente não encontrado.\n");
+            return;
+        }
 
         //Obrigatórios
         String nome = menu.lerNovoNomeCliente();
@@ -117,15 +126,12 @@ public class ClienteController {
     }
 
     //Selecionar campo de cliente para alterar dados
-    public void alterarCliente02(Menu menu, int id) {
+    public void alterarCliente02(Menu menu, Cliente cliente) {
         int opcao;
 
         do {
             //2. Exibe o submenu "2. Selecionar um campo para alterar"
             opcao = menu.exibirMenuSelecionarCampo();
-
-            //Instância de Cliente para receber novos dados.
-            Cliente cliente = buscarClientePorId(id);
 
             switch (opcao) {
                 case 1:
@@ -204,18 +210,20 @@ public class ClienteController {
     //Retorna cliente específico, localizado pelo ID no banco de dados
     public Cliente buscarClientePorId(int id) {
         return clienteDAO.buscarClientePorId(id);
-        //TODO tratamento de exceção caso o cliente retorne null
     }
 
     //Deleta cliente específico, localizado pelo ID no banco de dados
     public void deletarCliente(int id) {
-        try {
-            //Instância de Cliente para ser excluído.
-            Cliente cliente = buscarClientePorId(id);
-            clienteDAO.deletarCliente(cliente);
-        } catch (Exception e) {
-            System.err.println("Erro ao deletar o cliente especificado: " + e);
+
+        //Instância de Cliente para ser excluído.
+        Cliente cliente = buscarClientePorId(id);
+        if (cliente == null) {
+            System.err.println("Cliente não encontrado.\n");
+            return;
         }
+
+        clienteDAO.deletarCliente(cliente);
+
     }
 
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
