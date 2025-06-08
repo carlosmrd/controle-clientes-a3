@@ -38,9 +38,9 @@ public class ClienteDAO {
             stmt.setString(6, cliente.getCpf());
             stmt.setString(7, cliente.getNumeroProcesso());
             stmt.executeUpdate();
-            System.out.println("\nCliente cadastrado com sucesso");
+            System.out.println("\nCliente cadastrado com sucesso.");
         } catch (Exception e) {
-            System.err.println("\nErro ao cadastrar o cliente: " + e.getMessage());
+            System.err.println("\nErro ao cadastrar o cliente: " + e.getMessage() + "\n");
         }
     }
 
@@ -70,6 +70,7 @@ public class ClienteDAO {
 
             ResultSet rs = stmt.executeQuery();
 
+            //Só retorna
             if (rs.next()) {
                 Cliente cliente = new Cliente (
                         rs.getInt("id"),
@@ -90,7 +91,7 @@ public class ClienteDAO {
                 return cliente;
             }
         } catch (SQLException e) {
-            System.err.println("\nErro ao buscar cliente por ID: " + e.getMessage());
+            System.err.println("\nErro ao buscar cliente por ID: " + e.getMessage() + "\n");
         }
         return null;
     }
@@ -122,9 +123,9 @@ public class ClienteDAO {
             stmt.setInt(8, cliente.getStatusCliente());
             stmt.setInt(9, cliente.getId());
             stmt.executeUpdate();
-            System.out.println("\nCliente atualizado com sucesso");
+            System.out.println("\nCliente atualizado com sucesso.");
         } catch (SQLException e) {
-            System.err.println("\nErro ao atualizar cliente: " + e.getMessage());
+            System.err.println("\nErro ao atualizar cliente: " + e.getMessage() + "\n");
         }
     }
 
@@ -136,9 +137,9 @@ public class ClienteDAO {
         try (PreparedStatement stmt = conexao.prepareStatement(sql)){
             stmt.setInt(1, cliente.getId());
             stmt.executeUpdate();
-            System.out.println("\nCliente deletado com sucesso");
+            System.out.println("\nCliente deletado com sucesso.");
         } catch (SQLException e) {
-            System.err.println("\nErro ao deletar cliente: "+ e.getMessage());
+            System.err.println("\nErro ao deletar cliente: "+ e.getMessage() + "\n");
         }
     }
 }

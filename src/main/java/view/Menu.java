@@ -10,8 +10,8 @@ public class Menu {
     public int exibirMenuPrincipal() {
         System.out.println("\n----- MENU -----");
         System.out.println("1. Clientes");
-        System.out.println("2. Anotações");
-        System.out.println("3. Lembretes");
+        System.out.println("2. Lembretes");
+        System.out.println("3. Anotações");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
 
@@ -38,7 +38,7 @@ public class Menu {
 
     //Prompt para retornar ID do cliente
     public int lerIdCliente() {
-        System.out.print("\nInsira o ID do cliente: ");
+        System.out.print("Insira o ID do cliente: ");
 
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -327,7 +327,24 @@ public class Menu {
         return opcao;
     }
 
-    //Menu "2. Anotações"
+    //Menu "2. Lembretes"
+    //TODO
+    public int exibirMenuLembretes() {
+        System.out.println("\n--- LEMBRETES ---");
+        System.out.println("1. Criar lembrete");
+        System.out.println("2. Listar lembretes");
+        System.out.println("3. Buscar lembretes");
+        System.out.println("4. Alterar lembrete");
+        System.out.println("5. Excluir lembrete");
+        System.out.println("0. Voltar");
+        System.out.print("Escolha uma opção: ");
+
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+        return opcao;
+    }
+
+    //Menu "3. Anotações"
     //TODO
     public int exibirMenuAnotacoes() {
         System.out.println("\n--- ANOTAÇÕES ---");
@@ -343,20 +360,9 @@ public class Menu {
         return opcao;
     }
 
-    //Menu "3. Lembretes"
-    //TODO
-    public int exibirMenuLembretes() {
-        System.out.println("\n--- LEMBRETES ---");
-        System.out.println("1. Criar lembrete");
-        System.out.println("2. Listar lembretes");
-        System.out.println("3. Buscar lembretes");
-        System.out.println("4. Alterar lembrete");
-        System.out.println("5. Excluir lembrete");
-        System.out.println("0. Voltar");
-        System.out.print("Escolha uma opção: ");
+    public String lerNovaDescricaoAnotacao() {
+        System.out.print("Insira a anotação: ");
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine();
-        return opcao;
+        return scanner.nextLine();
     }
 }

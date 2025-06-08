@@ -9,11 +9,10 @@ public class Anotacao {
     private String descricaoAnotacao;
     private LocalDateTime dataHora;
 
-    //Construtor de Anotação sem ID, usado no registro
-    public Anotacao (int idCliente, String descricaoAnotacao, LocalDateTime dataHora) {
+    //Construtor de Anotação sem ID e dataHora, usada para inserir no banco de dados
+    public Anotacao (int idCliente, String descricaoAnotacao) {
         this.idCliente = idCliente;
         this.descricaoAnotacao = descricaoAnotacao;
-        this.dataHora = dataHora;
     }
 
     //Construtor de Anotação com todos os dados

@@ -1,6 +1,8 @@
+import controller.AnotacaoController;
 import controller.ClienteController;
 import database.ConexaoDB;
 import database.InicializadorDB;
+import model.AnotacaoDAO;
 import model.Cliente;
 import model.ClienteDAO;
 import view.Menu;
@@ -21,9 +23,11 @@ public class Main {
         //Cria uma instância dos DAO de Cliente, Lembrete e Anotacão, com a
         //conexão como parâmetro, para acesso a cada tabela do banco de dados.
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
+        AnotacaoDAO anotacaoDAO = new AnotacaoDAO(conexao);
         //Cria uma instância dos Controller de Cliente, Lembrete e Anotacão, com os
         //DAO como parâmetro, para as funções relacionadas a cada tabela.
         ClienteController clienteController =  new ClienteController(clienteDAO);
+        AnotacaoController anotacaoController =  new AnotacaoController(anotacaoDAO);
 
         int opcao;
 
@@ -38,13 +42,13 @@ public class Main {
                     break;
 
                 case 2:
-                    //2. Anotações
-                    menuAnotacoes(menu);
+                    //2. Lembretes
+                    menuLembretes(menu, clienteController);
                     break;
 
                 case 3:
-                    //3. Lembretes
-                    menuLembretes(menu);
+                    //3. Anotações
+                    menuAnotacoes(menu, clienteController, anotacaoController);
                     break;
 
                 case 0:
@@ -163,43 +167,7 @@ public class Main {
         }
     }
 
-    private static void menuAnotacoes(Menu menu) {
-        //TODO
-        int opcao;
-        do {
-            opcao = menu.exibirMenuAnotacoes();
-
-            switch (opcao) {
-                case 1:
-
-                    break;
-
-                case 2:
-
-                    break;
-
-                case 3:
-
-                    break;
-
-                case 4:
-
-                    break;
-
-                case 5:
-
-                    break;
-
-                case 0:
-                    break;
-
-                default:
-                    System.out.println("Opção inválida, tente novamente.");
-            }
-        } while (opcao != 0);
-    }
-
-    private static void menuLembretes(Menu menu) {
+    private static void menuLembretes(Menu menu, ClienteController clienteController) {
         //TODO
         int opcao;
         do {
@@ -228,6 +196,41 @@ public class Main {
 
                 case 0:
                     
+                    break;
+
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+            }
+        } while (opcao != 0);
+    }
+
+    private static void menuAnotacoes(Menu menu, ClienteController clienteController, AnotacaoController anotacaoController) {
+        //TODO
+        int opcao;
+        do {
+            //Exibe o menu "3. Anotações"
+            opcao = menu.exibirMenuAnotacoes();
+
+            switch (opcao) {
+                case 1:
+                    //1. Criar anotação
+                    anotacaoController.criarAnotacao(menu, clienteController);
+                    break;
+
+                case 2:
+                    //2. Buscar anotações
+                    anotacaoController.buscarAnotacoes(menu, clienteController);
+                    break;
+
+                case 3:
+                    //3. Alterar anotação
+                    break;
+
+                case 4:
+                    //4. Excluir anotação
+                    break;
+
+                case 0:
                     break;
 
                 default:
