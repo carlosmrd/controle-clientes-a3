@@ -83,7 +83,7 @@ public class AnotacaoController {
             return;
         }
 
-        System.out.println("Anotação atual: ");
+        System.out.println("\nAnotação atual: ");
         System.out.println(anotacao.getDescricaoAnotacao()+"\n");
 
         //Redefine a descricaoAnotaçao do objeto
@@ -103,11 +103,11 @@ public class AnotacaoController {
             return;
         }
 
-        System.out.println("Anotação ID " + id + ": ");
+        System.out.println("\nAnotação ID " + id + ": ");
         System.out.println(anotacao.getDescricaoAnotacao());
 
         if (menu.confirmacaoDeletarAnotacao()) {
-            anotacaoDAO.alterarAnotacao(anotacao);
+            anotacaoDAO.deletarAnotacao(anotacao);
         }
     }
 }
