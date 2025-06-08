@@ -58,13 +58,14 @@ public class AnotacaoController {
 
         //Exibe todas as anotações
         for (Anotacao anotacao : anotacoes) {
-            System.out.println("\nAnotação " + anotacao.getId());
+            System.out.println("\nAnotação nº " + anotacao.getId());
             System.out.println(anotacao.getDescricaoAnotacao());
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
             System.out.println("Data da anotação: " + anotacao.getDataHora().format(formatter));
         }
 
+        //Mensagem a ser exibida se o ArrayList estiver vazio
         if (anotacoes.isEmpty()) {
             System.out.println("\nNenhuma anotação encontrada para esse cliente.");
         }
