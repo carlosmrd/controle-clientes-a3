@@ -205,7 +205,6 @@ public class Main {
     }
 
     private static void menuAnotacoes(Menu menu, ClienteController clienteController, AnotacaoController anotacaoController) {
-        //TODO
         int opcao;
         do {
             //Exibe o menu "3. Anotações"
@@ -224,10 +223,12 @@ public class Main {
 
                 case 3:
                     //3. Alterar anotação
+                    anotacaoController.alterarAnotacao(menu, clienteController);
                     break;
 
                 case 4:
                     //4. Excluir anotação
+                    anotacaoController.deletarAnotacao(menu, clienteController);
                     break;
 
                 case 0:

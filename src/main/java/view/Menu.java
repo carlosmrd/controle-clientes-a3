@@ -345,7 +345,6 @@ public class Menu {
     }
 
     //Menu "3. Anotações"
-    //TODO
     public int exibirMenuAnotacoes() {
         System.out.println("\n--- ANOTAÇÕES ---");
         System.out.println("1. Criar anotação");
@@ -360,9 +359,45 @@ public class Menu {
         return opcao;
     }
 
-    public String lerNovaDescricaoAnotacao() {
+    public String lerDescricaoAnotacao() {
         System.out.print("Insira a anotação: ");
 
         return scanner.nextLine();
+    }
+
+    public String lerNovaDescricaoAnotacao() {
+        System.out.print("Insira a nova anotação: ");
+
+        return scanner.nextLine();
+    }
+
+    public int lerIdAnotacao() {
+        System.out.print("Insira o ID da anotação: ");
+
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
+    }
+
+    public boolean confirmacaoDeletarAnotacao() {
+        System.out.println("\nDeseja mesmo continuar?");
+        System.out.println("1. Sim");
+        System.out.println("2. Não");
+        System.out.print("Escolha uma opção: ");
+
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (opcao) {
+            case 1:
+                return true;
+
+            case 2:
+                return false;
+
+            default:
+                System.out.println("Opção inválida, tente novamente.");
+                return inserirNumeroProcesso();
+        }
     }
 }

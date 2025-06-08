@@ -78,4 +78,69 @@ public class AnotacaoDAO {
         }
         return null;
     }
+
+    //Retorna um objeto Anotacao de acordo com uma linha na tabela Anotacao, especificada pelo ID
+    public Anotacao buscarAnotacaoId(int id) {
+        String sql = """
+            SELECT
+                id,
+                id_cliente,
+                descricao_anotacao,
+                data_hora
+            FROM Anotacao
+            WHERE id = ?
+        """;
+
+        //Cria um statement usando a String sql
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            //Cria um objeto Anotacao com os dados retornados pela query
+            if (rs.next()) {
+                Anotacao anotacao = new Anotacao(
+                        rs.getInt("id"),
+                        rs.getInt("id_cliente"),
+                        rs.getString("descricao_anotacao"),
+                        rs.getTimestamp("data_hora").toLocalDateTime()
+                );
+                return anotacao;
+            }
+        } catch (SQLException e) {
+            System.err.println("\nErro ao buscar as anotações: " + e.getMessage() + "\n");
+        }
+        return null;
+    }
+
+    public void alterarAnotacao(Anotacao anotacao) {
+        String sql = """
+            UPDATE Anotacao SET
+                descricao_anotacao = ?
+            WHERE id = ?
+        """;
+
+        //Cria um statement usando a String sql e os atributos de Anotacao
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, anotacao.getDescricaoAnotacao());
+            stmt.setInt(2, anotacao.getId());
+            stmt.executeUpdate();
+            System.out.println("\nAnotação atualizada com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("\nErro ao atualizar anotação: " + e.getMessage() + "\n");
+        }
+    }
+
+    public void deletarAnotacao(Anotacao anotacao) {
+        String sql = "DELETE FROM Anotacao WHERE id = ?";
+
+        //Cria um statement usando a String sql
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setInt(1, anotacao.getId());
+            stmt.executeUpdate();
+            System.out.println("\nAnotação deletada com sucesso");
+        } catch (SQLException e) {
+            System.err.println("Erro ao deletar a anotação: " + e.getMessage() + "\n");
+        }
+    }
 }

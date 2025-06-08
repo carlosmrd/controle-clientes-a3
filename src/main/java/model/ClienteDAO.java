@@ -70,7 +70,7 @@ public class ClienteDAO {
 
             ResultSet rs = stmt.executeQuery();
 
-            //Só retorna
+            //Cria um objeto Cliente com os dados retornados pela query
             if (rs.next()) {
                 Cliente cliente = new Cliente (
                         rs.getInt("id"),

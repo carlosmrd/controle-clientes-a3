@@ -44,7 +44,7 @@ public class Anotacao {
         return descricaoAnotacao;
     }
 
-    public void setId(String descricaoAnotacao) {
+    public void setDescricaoAnotacao(String descricaoAnotacao) {
         this.descricaoAnotacao = descricaoAnotacao;
     }
 
