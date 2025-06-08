@@ -60,7 +60,7 @@ public class AnotacaoController {
 
         //Exibe todas as anotações
         for (Anotacao anotacao : anotacoes) {
-            System.out.println("\nAnotação nº " + anotacao.getId());
+            System.out.println("\nID da anotação: " + anotacao.getId());
             System.out.println(anotacao.getDescricaoAnotacao());
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
