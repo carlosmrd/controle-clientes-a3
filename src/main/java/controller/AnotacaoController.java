@@ -38,6 +38,8 @@ public class AnotacaoController {
         Anotacao anotacao = new Anotacao(cliente.getId(), descricaoAnotacao);
 
         anotacaoDAO.criarAnotacao(anotacao);
+
+
     }
 
     public void buscarAnotacoes(Menu menu, ClienteController clienteController) {

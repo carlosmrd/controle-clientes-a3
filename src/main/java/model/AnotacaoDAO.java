@@ -25,13 +25,19 @@ public class AnotacaoDAO {
         """;
 
         //Cria um statement usando a String sql e os atributos de Anotacao e Cliente
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        try (PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, anotacao.getIdCliente());
             stmt.setString(2, anotacao.getDescricaoAnotacao());
             stmt.executeUpdate();
-            System.out.println("\nAnotação criada com sucesso.");
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                int id = rs.getInt(1);
+                System.out.println("\nAnotação criada com sucesso. ID da anotação: " + id);
+            }
+
         } catch (Exception e) {
-            System.err.println("\nErro ao cadastrar o cliente: " + e.getMessage() + "\n");
+            System.err.println("\nErro ao criar anotação: " + e.getMessage() + "\n");
         }
     }
 
