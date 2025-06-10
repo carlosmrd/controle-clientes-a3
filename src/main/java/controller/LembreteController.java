@@ -1,6 +1,5 @@
 package controller;
 
-import model.Anotacao;
 import model.Lembrete;
 import model.LembreteDAO;
 import model.Cliente;
@@ -81,10 +80,10 @@ public class LembreteController {
         System.out.println("ID: " + cliente.getId());
         System.out.println("Nome: " + cliente.getNome());
 
-        //Cria um ArrayList para armazenar as anotações do cliente escolhido
+        //Cria um ArrayList para armazenar os lembretes do cliente escolhido
         ArrayList<Lembrete> lembretes = lembreteDAO.buscarLembretes(cliente);
 
-        //Exibe todas as anotações
+        //Exibe todos os lembretes
         for (Lembrete lembrete : lembretes) {
             System.out.println("\nID do lembrete: " + lembrete.getId());
             System.out.println(lembrete.getDescricaoLembrete());
@@ -126,15 +125,15 @@ public class LembreteController {
     public void deletarLembrete(Menu menu, ClienteController clienteController) {
         int id = menu.lerIdLembrete();
 
-        //Instância de anotação para ser deletada
+        //Instância de lembrete para ser deletada
         Lembrete lembrete = lembreteDAO.buscarLembreteId(id);
 
         if (lembrete == null) {
-            System.err.println("Anotação não encontrada.\n");
+            System.err.println("Lembrete não encontrado.\n");
             return;
         }
 
-        System.out.println("\nAnotação ID " + id + ": ");
+        System.out.println("\nLembrete ID " + id + ": ");
         System.out.println(lembrete.getDescricaoLembrete());
 
         if (menu.confirmacaoDesejaContinuar()) {

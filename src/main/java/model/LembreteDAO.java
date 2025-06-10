@@ -12,7 +12,7 @@ public class LembreteDAO {
         this.conexao = conexao;
     }
 
-    //Insere os atributos de um objeto Lembrete e o id de um objeto cliente como linha na tabela Anotacao
+    //Insere os atributos de um objeto Lembrete e o id de um objeto cliente como linha na tabela Lembrete
     public void criarLembrete(Lembrete lembrete) {
         String sql = """
             INSERT INTO Lembrete (
@@ -158,7 +158,7 @@ public class LembreteDAO {
             WHERE id = ?
         """;
 
-        //Cria um statement usando a String sql e os atributos de Anotacao
+        //Cria um statement usando a String sql e os atributos de Lembrete
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, lembrete.getDescricaoLembrete());
             stmt.setTimestamp(2, Timestamp.valueOf(lembrete.getDataHora()));

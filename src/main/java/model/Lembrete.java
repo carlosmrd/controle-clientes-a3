@@ -9,14 +9,14 @@ public class Lembrete {
     private String descricaoLembrete;
     private LocalDateTime dataHora;
 
-    //Construtor de Anotação sem ID e dataHora, usada para inserir no banco de dados
+    //Construtor de Lembrete sem ID e dataHora, usada para inserir no banco de dados
     public Lembrete (int idCliente, String descricaoLembrete, LocalDateTime dataHora) {
         this.idCliente = idCliente;
         this.descricaoLembrete = descricaoLembrete;
         this.dataHora = dataHora;
     }
 
-    //Construtor de Anotação com todos os dados
+    //Construtor de Lembrete com todos os dados
     public Lembrete (int id, int idCliente, String descricaoLembrete, LocalDateTime dataHora) {
         this.id = id;
         this.idCliente = idCliente;
