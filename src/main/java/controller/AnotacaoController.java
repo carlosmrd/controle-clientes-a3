@@ -37,12 +37,10 @@ public class AnotacaoController {
         Anotacao anotacao = new Anotacao(cliente.getId(), descricaoAnotacao);
 
         anotacaoDAO.criarAnotacao(anotacao);
-
-
     }
 
     public void buscarAnotacoes(Menu menu, ClienteController clienteController) {
-        //Instância de cliente para o idCliente do objeto anotacao
+        //Instância de cliente para o idCliente dos objetos anotacao
         Cliente cliente = clienteController.buscarClientePorId(menu.lerIdCliente());
 
         if (cliente == null) {
@@ -87,7 +85,7 @@ public class AnotacaoController {
         System.out.println(anotacao.getDescricaoAnotacao()+"\n");
 
         //Redefine a descricaoAnotaçao do objeto
-        anotacao.setDescricaoAnotacao(menu.lerDescricaoAnotacao());
+        anotacao.setDescricaoAnotacao(menu.lerNovaDescricaoAnotacao());
 
         anotacaoDAO.alterarAnotacao(anotacao);
     }

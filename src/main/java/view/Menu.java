@@ -1,5 +1,8 @@
 package view;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -342,6 +345,35 @@ public class Menu {
         int opcao = scanner.nextInt();
         scanner.nextLine();
         return opcao;
+    }
+
+    public String lerDescricaoLembrete() {
+        System.out.print("Insira o lembrete: ");
+
+        return scanner.nextLine();
+    }
+
+    public LocalDateTime lerDataHoraLembrete() {
+        System.out.print("Insira a data para o lembrete (dd/MM/yyyy): ");
+        String data = scanner.nextLine();
+
+        System.out.print("Insira a hora para o lembrete (HH:mm): ");
+        String hora = scanner.nextLine();
+
+        //Concatena data e hora em uma única string no formato "dd/MM/yyyy HH:mm"
+        String dataHoraInput = data + " " + hora;
+
+        //Cria um formatter para receber a string acima e formatar no padrão do LocalDateTime
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        try {
+            LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput, formatter);
+            return dataHora;
+        } catch (Exception e) {
+            System.out.println("Data e hora inválidas. Tente novamente");
+            lerDataHoraLembrete();
+            return null;
+        }
     }
 
     //Menu "3. Anotações"

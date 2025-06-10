@@ -1,10 +1,12 @@
 import controller.AnotacaoController;
 import controller.ClienteController;
+import controller.LembreteController;
 import database.ConexaoDB;
 import database.InicializadorDB;
 import model.AnotacaoDAO;
 import model.Cliente;
 import model.ClienteDAO;
+import model.LembreteDAO;
 import view.Menu;
 
 import java.sql.Connection;
@@ -24,10 +26,12 @@ public class Main {
         //conexão como parâmetro, para acesso a cada tabela do banco de dados.
         ClienteDAO clienteDAO = new ClienteDAO(conexao);
         AnotacaoDAO anotacaoDAO = new AnotacaoDAO(conexao);
+        LembreteDAO lembreteDAO = new LembreteDAO(conexao);
         //Cria uma instância dos Controller de Cliente, Lembrete e Anotacão, com os
         //DAO como parâmetro, para as funções relacionadas a cada tabela.
         ClienteController clienteController =  new ClienteController(clienteDAO);
         AnotacaoController anotacaoController =  new AnotacaoController(anotacaoDAO);
+        LembreteController lembreteController =  new LembreteController(lembreteDAO);
 
         int opcao;
 
@@ -43,7 +47,7 @@ public class Main {
 
                 case 2:
                     //2. Lembretes
-                    menuLembretes(menu, clienteController);
+                    menuLembretes(menu, clienteController, lembreteController);
                     break;
 
                 case 3:
@@ -167,15 +171,17 @@ public class Main {
         }
     }
 
-    private static void menuLembretes(Menu menu, ClienteController clienteController) {
+    private static void menuLembretes(Menu menu, ClienteController clienteController, LembreteController lembreteController) {
         //TODO
         int opcao;
         do {
+            //Exibe o menu "2. Lembretes"
             opcao = menu.exibirMenuLembretes();
 
             switch (opcao) {
                 case 1:
-
+                    //1. Criar lembrete
+                    lembreteController.criarLembrete(menu, clienteController);
                     break;
 
                 case 2:
