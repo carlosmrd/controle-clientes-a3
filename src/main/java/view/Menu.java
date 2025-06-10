@@ -331,7 +331,6 @@ public class Menu {
     }
 
     //Menu "2. Lembretes"
-    //TODO
     public int exibirMenuLembretes() {
         System.out.println("\n--- LEMBRETES ---");
         System.out.println("1. Criar lembrete");
@@ -353,11 +352,48 @@ public class Menu {
         return scanner.nextLine();
     }
 
+    public String lerNovaDescricaoLembrete() {
+        System.out.print("Insira o novo lembrete: ");
+
+        return scanner.nextLine();
+    }
+
+    public int lerIdLembrete() {
+        System.out.print("Insira o ID do lembrete: ");
+
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        return id;
+    }
+
     public LocalDateTime lerDataHoraLembrete() {
         System.out.print("Insira a data para o lembrete (dd/MM/yyyy): ");
         String data = scanner.nextLine();
 
         System.out.print("Insira a hora para o lembrete (HH:mm): ");
+        String hora = scanner.nextLine();
+
+        //Concatena data e hora em uma única string no formato "dd/MM/yyyy HH:mm"
+        String dataHoraInput = data + " " + hora;
+
+        //Cria um formatter para receber a string acima e formatar no padrão do LocalDateTime
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        try {
+            LocalDateTime dataHora = LocalDateTime.parse(dataHoraInput, formatter);
+            return dataHora;
+        } catch (Exception e) {
+            System.out.println("Data e hora inválidas. Tente novamente");
+            lerDataHoraLembrete();
+            return null;
+        }
+    }
+
+    public LocalDateTime lerNovaDataHoraLembrete() {
+        System.out.print("Insira a nova data para o lembrete (dd/MM/yyyy): ");
+        String data = scanner.nextLine();
+
+        System.out.print("Insira a nova hora para o lembrete (HH:mm): ");
         String hora = scanner.nextLine();
 
         //Concatena data e hora em uma única string no formato "dd/MM/yyyy HH:mm"
@@ -411,7 +447,7 @@ public class Menu {
         return id;
     }
 
-    public boolean confirmacaoDeletarAnotacao() {
+    public boolean confirmacaoDesejaContinuar() {
         System.out.println("\nDeseja mesmo continuar?");
         System.out.println("1. Sim");
         System.out.println("2. Não");

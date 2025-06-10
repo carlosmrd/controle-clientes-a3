@@ -98,7 +98,7 @@ public class Main {
 
                 case 5:
                     //5. Excluir cliente
-                    menuDeletarClientes(menu, clienteController);
+                    clienteController.deletarCliente(menu);
                     break;
 
                 case 0:
@@ -149,30 +149,8 @@ public class Main {
             }
         } while (opcao != 0);
     }
-    
-    private static void menuDeletarClientes(Menu menu, ClienteController clienteController){
-        int id = menu.lerIdCliente();
-
-        int opcao;
-
-        //Exibe o submenu "Deseja mesmo prosseguir?"
-        opcao = menu.exibirMenuDeletarCliente();
-        switch (opcao) {
-            case 1:
-                //1. Prosseguir
-                clienteController.deletarCliente(id);
-                break;
-            case 0 :
-                //0. Voltar
-                break;
-            default:
-                System.out.println("Opção inválida, tente novamente.");
-                break;
-        }
-    }
 
     private static void menuLembretes(Menu menu, ClienteController clienteController, LembreteController lembreteController) {
-        //TODO
         int opcao;
         do {
             //Exibe o menu "2. Lembretes"
@@ -185,23 +163,26 @@ public class Main {
                     break;
 
                 case 2:
-
+                    //3. Listar lembrete
+                    lembreteController.listarLembretes(menu, clienteController);
                     break;
 
                 case 3:
-
+                    //3. Buscar lembrete
+                    lembreteController.buscarLembretes(menu, clienteController);
                     break;
 
                 case 4:
-
+                    //4. Alterar lembrete
+                    lembreteController.alterarLembrete(menu, clienteController);
                     break;
 
                 case 5:
-
+                    //5. Excluir lembrete
+                    lembreteController.deletarLembrete(menu, clienteController);
                     break;
 
                 case 0:
-                    
                     break;
 
                 default:

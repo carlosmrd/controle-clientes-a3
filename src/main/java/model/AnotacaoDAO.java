@@ -108,7 +108,7 @@ public class AnotacaoDAO {
                 return anotacao;
             }
         } catch (SQLException e) {
-            System.err.println("\nErro ao buscar as anotações: " + e.getMessage() + "\n");
+            System.err.println("\nErro ao buscar a anotação: " + e.getMessage() + "\n");
         }
         return null;
     }

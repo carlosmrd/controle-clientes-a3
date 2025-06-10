@@ -104,7 +104,7 @@ public class AnotacaoController {
         System.out.println("\nAnotação ID " + id + ": ");
         System.out.println(anotacao.getDescricaoAnotacao());
 
-        if (menu.confirmacaoDeletarAnotacao()) {
+        if (menu.confirmacaoDesejaContinuar()) {
             anotacaoDAO.deletarAnotacao(anotacao);
         }
     }
