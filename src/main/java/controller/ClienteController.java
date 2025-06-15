@@ -5,6 +5,7 @@ import model.ClienteDAO;
 import view.Menu;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class ClienteController {
 
@@ -213,9 +214,7 @@ public class ClienteController {
     }
 
     //Deleta cliente específico, localizado pelo ID no banco de dados
-    public void deletarCliente(Menu menu) {
-        int id = menu.lerIdCliente();
-
+    public void deletarCliente(Menu id) {
 
         //Instância de Cliente para ser excluído.
         Cliente cliente = buscarClientePorId(id);
@@ -224,8 +223,38 @@ public class ClienteController {
             return;
         }
 
-        if (menu.confirmacaoDesejaContinuar()) {
-            clienteDAO.deletarCliente(cliente);
+        clienteDAO.deletarCliente(cliente);
+
+    }
+
+    //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
+    //Acho que não vamos precisar usar
+    public void atualizarCliente(Cliente cliente) {
+        clienteDAO.atualizarCliente(cliente);
+    }
+
+    public void exibirTodosClientes() {
+        List<Cliente> clientes = clienteDAO.listarTodosClientes();
+
+        if (clientes == null || clientes.isEmpty()) {
+            System.out.println("\nNenhum cliente encontrado.");
+            return;
+        }
+
+        for (Cliente cliente : clientes) {
+            System.out.println("ID: " + cliente.getId());
+            System.out.println("Nome: " + cliente.getNome());
+            System.out.println("Telefone: " + cliente.getTelefone());
+            System.out.println("UF: " + cliente.getUf());
+            System.out.println("CEP: " + cliente.getCep());
+            System.out.println("Complemento: " + cliente.getComplemento());
+            System.out.println("CPF: " + cliente.getCpf());
+            System.out.println("Número do Processo: " + cliente.getNumeroProcesso());
+            System.out.println("Status: " + cliente.getDescricaoStatus());
+            System.out.println("Data de Cadastro: " + cliente.getDataCadastro());
+            System.out.println("----------------------------------------");
         }
     }
+
+
 }

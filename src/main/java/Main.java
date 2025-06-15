@@ -83,7 +83,7 @@ public class Main {
 
                 case 2:
                     //2. Listar clientes
-                    //TODO
+                    clienteController.exibirTodosClientes();
                     break;
 
                 case 3:

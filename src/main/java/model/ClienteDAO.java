@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO {
 
@@ -142,4 +144,54 @@ public class ClienteDAO {
             System.err.println("\nErro ao deletar cliente: "+ e.getMessage() + "\n");
         }
     }
+
+    public List<Cliente> listarTodosClientes() {
+        List<Cliente> clientes = new ArrayList<>();
+
+        String sql = """
+        SELECT
+            c.id,
+            c.nome,
+            c.telefone,
+            c.uf,
+            c.cep,
+            c.complemento,
+            c.cpf,
+            c.numero_processo,
+            c.status_cliente,
+            c.data_cadastro,
+            s.descricao_status
+        FROM Cliente c
+        JOIN StatusCliente s ON c.status_cliente = s.codigo
+    """;
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("telefone"),
+                        rs.getString("uf"),
+                        rs.getString("cep"),
+                        rs.getString("complemento"),
+                        rs.getString("cpf"),
+                        rs.getString("numero_processo"),
+                        rs.getInt("status_cliente"),
+                        rs.getTimestamp("data_cadastro").toLocalDateTime()
+                );
+
+                cliente.setDescricaoStatus(rs.getString("descricao_status"));
+                clientes.add(cliente);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("\nErro ao listar clientes: " + e.getMessage() + "\n");
+        }
+
+        return clientes;
+    }
+
+
 }
