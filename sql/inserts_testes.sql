@@ -1,4 +1,3 @@
-
 INSERT INTO Cliente (nome, telefone, uf, cep, complemento, cpf, numero_processo, status_cliente) VALUES
 ('João Silva', '11999998888', 'SP', '01001000', 'número 123', '12345678901', '2024X0001', 1),
 ('Ana Lima', '21912345678', 'RJ', '22041001', 'número 456', '98765432100', '2024X0002', 2),
