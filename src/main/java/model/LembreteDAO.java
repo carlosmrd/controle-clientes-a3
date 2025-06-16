@@ -79,6 +79,43 @@ public class LembreteDAO {
         return null;
     }
 
+    public ArrayList<Lembrete> listarLembretesHoje() {
+
+        ArrayList<Lembrete> lembretes = new ArrayList<>();
+
+        String sql = """
+            SELECT
+                id,
+                id_cliente,
+                descricao_lembrete,
+                data_hora
+            FROM Lembrete
+            WHERE DATE(data_hora) = CURRENT_DATE
+            ORDER BY data_hora ASC
+        """;
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            //Cria um objeto dentro do ArrayList para cada linha do banco que corresponder
+            //a query até que não existam mais linhas.
+            while (rs.next()) {
+                lembretes.add(new Lembrete(
+                        rs.getInt("id"),
+                        rs.getInt("id_cliente"),
+                        rs.getString("descricao_lembrete"),
+                        rs.getTimestamp("data_hora").toLocalDateTime()
+                ));
+            }
+            //Retorna o ArrayList
+            return lembretes;
+        } catch (SQLException e) {
+            System.err.println("\nErro ao buscar os lembretes: " + e.getMessage() + "\n");
+        }
+        return null;
+    }
+
     //Retorna um ArrayList de lembretes conforme a foreign key id_cliente da tabela Lembretes
     public ArrayList<Lembrete> buscarLembretes(Cliente cliente) {
 
