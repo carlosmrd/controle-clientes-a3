@@ -56,6 +56,8 @@ Atualize as classes `ConexaoDB.java` e `InicializadorDB.java` com os seus dados 
 
 A classe `InicializadorDB.java` irá criar o banco de dados conforme as necessidades do programa na primeira execução.
 
+Caso queira, o diretório `/sql` inclui um script para inserir diversos clientes, anotações e lembretes fictícios, que podem ser usados para testes.
+
 ### 3. Compilar e Executar
 
 Compile e execute a classe Main.java. O programa será iniciado com menus interativos no terminal.
