@@ -214,7 +214,8 @@ public class ClienteController {
     }
 
     //Deleta cliente específico, localizado pelo ID no banco de dados
-    public void deletarCliente(Menu id) {
+    public void deletarCliente(Menu menu) {
+        int id = menu.lerIdCliente();
 
         //Instância de Cliente para ser excluído.
         Cliente cliente = buscarClientePorId(id);
@@ -224,7 +225,6 @@ public class ClienteController {
         }
 
         clienteDAO.deletarCliente(cliente);
-
     }
 
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados
