@@ -96,7 +96,7 @@ Este projeto é de caráter educacional e foi desenvolvido como um trabalho acad
 
 ### Integrantes
 
-- Augusto (AugustoPavao7)
-- Carlos (carlosmrd)
+- Augusto ([AugustoPavao7](https://github.com/augustopavao7))
+- Carlos ([carlosmrd](https://github.com/carlosmrd))
 - Lucas
-- Keven (KevenKovu)
+- Keven ([KevenKovu](https://github.com/KevenKovu))
