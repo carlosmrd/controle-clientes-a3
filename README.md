@@ -42,8 +42,8 @@ Scripts de criação do banco e das tabelas fazem parte da classe InicializadorD
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/carlosmrd/controle-clientes-a3.git
+cd controle-clientes-a3
 ```
 
 ### 2. Configurar a Conexão com o Banco
