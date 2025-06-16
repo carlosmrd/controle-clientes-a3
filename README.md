@@ -18,10 +18,11 @@ O sistema tem como objetivo auxiliar escritórios jurídicos no controle de **cl
 
 ### Tecnologias Utilizadas
 
-- Java 24
-- JDBC (conexão com banco de dados)
-- MySQL (versão 8 ou compatível)
-- IDE de sua preferência (Eclipse, IntelliJ, NetBeans, etc.)
+- [Java 24](https://www.oracle.com/br/java/technologies/downloads/) (linguagem principal usada para o desenvolvimento da aplicação)
+- Maven (ferramenta de automação de build e gerenciamento de dependências)
+- [MySQL 8](https://www.mysql.com/downloads/) (banco de dados relacional utilizado para armazenar os dados dos clientes, anotações e lembretes)
+- JDBC (Java Database Connectivity — utilizado para conectar a aplicação Java ao banco de dados MySQL)
+- IDE de sua preferência ([Eclipse](https://eclipseide.org/), [IntelliJ](https://www.jetbrains.com/idea/download/?section=windows), [NetBeans](https://netbeans.apache.org/front/main/download/), etc.)
 
 ### Estrutura do Banco de Dados
 
