@@ -217,14 +217,18 @@ public class ClienteController {
     public void deletarCliente(Menu menu) {
         int id = menu.lerIdCliente();
 
+        if (menu.confirmacaoDesejaContinuar()) {
+
         //Instância de Cliente para ser excluído.
         Cliente cliente = buscarClientePorId(id);
+
         if (cliente == null) {
             System.err.println("Cliente não encontrado.\n");
             return;
         }
 
         clienteDAO.deletarCliente(cliente);
+        }
     }
 
     //Atualiza cliente específico no banco, localizado pelo ID no banco de dados

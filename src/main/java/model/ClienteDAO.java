@@ -163,6 +163,7 @@ public class ClienteDAO {
             s.descricao_status
         FROM Cliente c
         JOIN StatusCliente s ON c.status_cliente = s.codigo
+        ORDER BY c.id ASC
     """;
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
