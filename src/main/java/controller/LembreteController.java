@@ -63,7 +63,7 @@ public class LembreteController {
 
         //Mensagem a ser exibida se o ArrayList estiver vazio
         if (lembretes.isEmpty()) {
-            System.out.println("\nNenhuma lembrete encontrado para esse cliente.");
+            System.out.println("\nNenhum lembrete encontrado.");
         }
     }
 
