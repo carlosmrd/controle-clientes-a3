@@ -1,3 +1,4 @@
+USE controle_clientes_a3;
 
 INSERT INTO Cliente (nome, telefone, uf, cep, complemento, cpf, numero_processo, status_cliente) VALUES
 ('João Silva', '11999998888', 'SP', '01001000', 'número 123', '12345678901', '2024X0001', 1),
