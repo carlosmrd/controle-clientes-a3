@@ -63,7 +63,34 @@ public class LembreteController {
 
         //Mensagem a ser exibida se o ArrayList estiver vazio
         if (lembretes.isEmpty()) {
-            System.out.println("\nNenhuma lembrete encontrado para esse cliente.");
+            System.out.println("\nNenhum lembrete encontrado.");
+        }
+    }
+
+    public void listarLembretesHoje(Menu menu, ClienteController clienteController) {
+
+        System.out.println("\nLembretes para hoje: ");
+        //Cria um ArrayList para armazenar os lembretes
+        ArrayList<Lembrete> lembretes = lembreteDAO.listarLembretesHoje();
+
+        //Exibe os lembretes dentro do ArrayList
+        for (Lembrete lembrete : lembretes) {
+            System.out.println("\nID do cliente: " + lembrete.getIdCliente());
+
+            //Instância de cliente para exibir o nome do cliente associado ao lembrete
+            Cliente cliente = clienteController.buscarClientePorId(lembrete.getIdCliente());
+            System.out.println("Nome do cliente: " + cliente.getNome());
+
+            System.out.println("ID do lembrete: " + lembrete.getId());
+            System.out.println(lembrete.getDescricaoLembrete());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+            System.out.println("Data e hora: " + lembrete.getDataHora().format(formatter));
+        }
+
+        //Mensagem a ser exibida se o ArrayList estiver vazio
+        if (lembretes.isEmpty()) {
+            System.out.println("\nNenhum lembrete encontrado.");
         }
     }
 
