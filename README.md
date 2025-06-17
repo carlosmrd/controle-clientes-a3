@@ -12,6 +12,8 @@ O sistema tem como objetivo auxiliar escritórios jurídicos no controle de **cl
 - Uso de menus interativos para navegação no terminal.
 - Integração com banco de dados relacional (MySQL).
 
+Detalhes sobre o levantamento de requisitos e a modelagem do software estão inclusos no arquivo `levantamento-e-modelagem.pdf` no diretório `/docs`.
+
 ---
 
 ## Requisitos do Sistema
